@@ -1,0 +1,276 @@
+:root {
+  --mobile-bp: 768px;
+                
+  --color-black: black;
+  --color-white: white;
+  --color-link: #d52b1e;
+  --color-link-hover: rgba(213, 43, 30, 0.8);
+  --color-title: #333333;
+  --color-title-alt: white;
+  --color-text: #928b81;
+  --color-text-alt: white;
+  --color-background: #f5f3ee;
+  --color-background-alt: var(--white);
+  --font-family: "Myriad Pro";
+  --font-size: 62.5%;
+  --border-color: transparent;
+  --border-color-alt: #d52b1e;
+  --border-size: 0;
+  --border-radius: 0;
+                    
+  --color01: #333333;
+  --color02: #d52b1e;
+  --color03: #f5f3ee;
+  --color04: var(--color-white);
+  --bg-color01: #f5f3ee;
+  --bg-color02: var(--color-white);
+  --bg-color03: var(--color-black);
+  --bg-color04: #333333;
+  --font-family01: "Myriad Pro";
+  --font-family02: "Myriad Pro";
+  --font-family03: "Myriad Pro";
+  --color-border01: #333333;
+  --color-border02: #d52b1e;
+  --color-border03: #f5f3ee;
+  --color-border04: var(--color-white);
+             
+    
+                                          
+                                        
+                                         
+  
+              
+  --bkt-color-title: var(--color-white);
+  --bkt-color-text: var(--color-white);
+              
+  --ftr-color-text:var(--color-text);
+  --ftr-border:var(--color-text);
+              
+  --hdr-bg:var(--color-white);
+  --hdr-color-text:var(--color-text);
+  --hdr-border:#e6e3e3;
+  --hdr-border-width:0.1rem;
+  --hdr-menu-active:var(--color-link);
+  --hdr-menu-active-width:100%;
+  --hdr-menu-active-weight:.2rem;
+             
+  --btn-bg: var(--color02);
+  --btn-color-text: var(--color-text-alt);
+  --btn-border-width: 0;
+  --btn-border-color: var(--color02);
+  --btn-border-radius:0.4rem;
+  --btn-bg-hover:rgba(213, 43, 30, 0.6);
+  --btn-text-hover:var(--color-text-alt);
+  --btn-bg-2: var(--color-white);
+  --btn-color-text-2: var(--color02);
+  --btn-border-color-2: var(--color02);
+  --btn-bg-hover-2:var(--color-white);
+  --btn-text-hover-2:rgba(213, 43, 30, 0.6);
+                
+  --news-border-size: var(--border-size);
+  --news-border-color:  var(--border-color);
+                         
+  --crlv-color-title: var(--color-white);
+  --crlv-color-text: var(--color-white);
+  --crlv-color-link: var(--color-link); }
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0; }
+  .row.no-gutters > [class^="col-"],
+  .row.no-gutters > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0; }
+
+html {
+  font-size: var(--font-size); }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-BoldCond.eot");
+  src: url("../../fonts/MyriadPro-BoldCond.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-BoldCond.woff2") format("woff2"), url("../../fonts/MyriadPro-BoldCond.woff") format("woff"), url("../../fonts/MyriadPro-BoldCond.ttf") format("truetype"), url("../../fonts/MyriadPro-BoldCond.svg#MyriadPro-BoldCond") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-Regular.eot");
+  src: url("../../fonts/MyriadPro-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-Regular.woff2") format("woff2"), url("../../fonts/MyriadPro-Regular.woff") format("woff"), url("../../fonts/MyriadPro-Regular.ttf") format("truetype"), url("../../fonts/MyriadPro-Regular.svg#MyriadPro-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-Cond.eot");
+  src: url("../../fonts/MyriadPro-Cond.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-Cond.woff2") format("woff2"), url("../../fonts/MyriadPro-Cond.woff") format("woff"), url("../../fonts/MyriadPro-Cond.ttf") format("truetype"), url("../../fonts/MyriadPro-Cond.svg#MyriadPro-Cond") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-BoldCondIt.eot");
+  src: url("../../fonts/MyriadPro-BoldCondIt.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-BoldCondIt.woff2") format("woff2"), url("../../fonts/MyriadPro-BoldCondIt.woff") format("woff"), url("../../fonts/MyriadPro-BoldCondIt.ttf") format("truetype"), url("../../fonts/MyriadPro-BoldCondIt.svg#MyriadPro-BoldCondIt") format("svg");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-SemiboldIt.eot");
+  src: url("../../fonts/MyriadPro-SemiboldIt.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-SemiboldIt.woff2") format("woff2"), url("../../fonts/MyriadPro-SemiboldIt.woff") format("woff"), url("../../fonts/MyriadPro-SemiboldIt.ttf") format("truetype"), url("../../fonts/MyriadPro-SemiboldIt.svg#MyriadPro-SemiboldIt") format("svg");
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-Light.eot");
+  src: url("../../fonts/MyriadPro-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-Light.woff2") format("woff2"), url("../../fonts/MyriadPro-Light.woff") format("woff"), url("../../fonts/MyriadPro-Light.ttf") format("truetype"), url("../../fonts/MyriadPro-Light.svg#MyriadPro-Light") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-Semibold.eot");
+  src: url("../../fonts/MyriadPro-Semibold.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-Semibold.woff2") format("woff2"), url("../../fonts/MyriadPro-Semibold.woff") format("woff"), url("../../fonts/MyriadPro-Semibold.ttf") format("truetype"), url("../../fonts/MyriadPro-Semibold.svg#MyriadPro-Semibold") format("svg");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-Bold.eot");
+  src: url("../../fonts/MyriadPro-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-Bold.woff2") format("woff2"), url("../../fonts/MyriadPro-Bold.woff") format("woff"), url("../../fonts/MyriadPro-Bold.ttf") format("truetype"), url("../../fonts/MyriadPro-Bold.svg#MyriadPro-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-CondIt.eot");
+  src: url("../../fonts/MyriadPro-CondIt.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-CondIt.woff2") format("woff2"), url("../../fonts/MyriadPro-CondIt.woff") format("woff"), url("../../fonts/MyriadPro-CondIt.ttf") format("truetype"), url("../../fonts/MyriadPro-CondIt.svg#MyriadPro-CondIt") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../../fonts/MyriadPro-BoldIt.eot");
+  src: url("../../fonts/MyriadPro-BoldIt.eot?#iefix") format("embedded-opentype"), url("../../fonts/MyriadPro-BoldIt.woff2") format("woff2"), url("../../fonts/MyriadPro-BoldIt.woff") format("woff"), url("../../fonts/MyriadPro-BoldIt.ttf") format("truetype"), url("../../fonts/MyriadPro-BoldIt.svg#MyriadPro-BoldIt") format("svg");
+  font-weight: bold;
+  font-style: italic; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline; }
+
+                                                 
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block; }
+
+a {
+  text-decoration: none; }
+
+em {
+  font-style: oblique !important; }
+
+strong {
+  font-weight: bold !important; }
+
+.d-none {
+  display: none !important; }
+
+.no-border {
+  border: 0 !important; }
+
+.color-01 {
+  color: var(--color01) !important; }
+
+a:hover.color-01,
+a:hover.color-02,
+a:hover.color-03,
+a:hover.color-04,
+a:hover.color-05,
+a:hover.color-06,
+a:hover.color-07,
+a:hover.color-08 {
+  color: var(--color-link-hover) !important; }
+
+.color-02 {
+  color: var(--color02) !important; }
+
+.color-03 {
+  color: var(--color03) !important; }
+
+.color-04 {
+  color: var(--color04) !important; }
+
+.color-05 {
+  color: var(--color05) !important; }
+
+.color-06 {
+  color: var(--color06) !important; }
+
+.color-07 {
+  color: var(--color07) !important; }
+
+.color-08 {
+  color: var(--color08) !important; }
+
+.font-family-01 {
+  font-family: var(--font-family01) !important; }
+
+.font-family-02 {
+  font-family: var(--font-family02) !important; }
+
+.font-family-03 {
+  font-family: var(--font-family03) !important; }
+
+.font-family-04 {
+  font-family: var(--font-family04) !important; }
+
+.font-family-05 {
+  font-family: var(--font-family05) !important; }
+
+.bg-color-01 {
+  background-color: var(--bg-color01) !important; }
+
+.bg-color-02 {
+  background-color: var(--bg-color02) !important; }
+
+.bg-color-03 {
+  background-color: var(--bg-color03) !important; }
+
+.bg-color-04 {
+  background-color: var(--bg-color04) !important; }
+
+.bg-color-05 {
+  background-color: var(--bg-color05) !important; }
+
+.color-border-01 {
+  border-color: var(--color-border01); }
+
+.color-border-02 {
+  border-color: var(--color-border02); }
+
+.color-border-03 {
+  border-color: var(--color-border03); }
+
+.color-border-04 {
+  border-color: var(--color-border04); }
+
+textarea::-ms-clear, input::-ms-clear {
+  display: none; }
+
+select::-ms-expand {
+  display: none; }

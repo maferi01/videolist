@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta charset="utf-8"/>
+    <meta name="application-name" content="INVERSIS" />
+    <title>INVERSIS</title>
+    <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="./../../assets/Script/ie11CustomProperties.js"><\x2fscript>');</script>
+    <link rel="stylesheet" href="../../assets/Script/owl-carousel-2.3.4/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../assets/Script/owl-carousel-2.3.4/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../assets/Script/jquery-ui-1.12.1/jquery-ui.css" media="all">
+    <link rel="stylesheet" href="../../assets/Script/jquerymodal/jquerymodal.css" media="all">
+    <link rel="stylesheet" href="../../assets/CSS/bootstrap-grid-4.3.1/bootstrap-grid.min.css" media="all">
+    <link rel="stylesheet" href="../../assets/CSS/fontawesome-5.9.0/fontawesome.all.min.css" media="all">
+    <link rel="stylesheet" href="../../assets/Script/videojs/video.js/dist/video-js.css">
+    <link rel="stylesheet" href="../../assets/Script/videojs/videojs-playlist-ui/dist/videojs-playlist-ui.css">
+    <link rel="stylesheet" href="../../assets/CSS/themes/evo.css" media="all">
+    <link rel="stylesheet" href="../../assets/CSS/stylesPC.css" media="all">
+    <script src="../../assets/Script/jquery-ui-1.12.1/jquery.js"></script>
+    <script src="../../assets/Script/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../../assets/Script/jquerymodal/jquerymodal.js"></script>
+    <script src="../../assets/Script/owl-carousel-2.3.4/owl.carousel.min.js"></script>
+    <script src="../../assets/Script/videojs/video.js/dist/video.js"></script>
+    <script src="../../assets/Script/videojs/videojs-playlist/dist/videojs-playlist.js"></script>
+    <script src="../../assets/Script/videojs/videojs-playlist-ui/dist/videojs-playlist-ui.js"></script>
+    <script src="../../assets/Script/videojs/videojs-playlist-ui/dist/lang/es.js"></script>
+    <script src="../../assets/Script/videojs/videojs-youtube/videojs-youtube.js"></script>
+    <script src="../../assets/Script/videojs/videojs-vimeo/videojs-vimeo.umd.js"></script>
+    <script src="../../assets/Script/howler/howler.min.js"></script>
+    <script src="../../assets/Script/audiojs.js"></script>
+    <script src="../../assets/Script/scriptPC.js"></script>
+    <script src="../../assets/Script/videoinfo.js"></script>
+</head>
+
+<body>
+
+    
+
+  
+            <div class="cmp-carruselVideos">
+  <h2 class="cmp-carruselVideos__title">Lorem ipsum dolor sit amet</h2>
+  <div class="cmp-carruselVideos__wrapper">
+    <video id="video" class="video-js  vjs-big-play-centered " controls>
+    </video>
+
+    <div class="vjs-playlist vjs-fluid vjs-playlist-vertical vjs-mouse">
+      <!--
+        The contents of this element will be filled based on the
+        currently loaded playlist
+      -->
+    </div>
+  </div>
+</div>
+
+<script>
+
+// $.getJSON('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=xjS6SftYQaQ&key=AIzaSyDwkQH4OOeYn27ZthmxO-_ZjJx3yNzGI4U',function(data){
+//  // alert(JSON.stringify(data))
+// })
+var player = videojs('video',{
+            fluid:false, // videojs settings
+            controls:true,
+           // height: '300'          
+          });
+
+
+
+var colec=[
+{type: 'video/mp4', src: 'http://localhost:8080/1280.mp4'},
+{ src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+{ src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
+{ src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+{
+        type: "video/youtube",
+        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+      }
+// {
+//         "type": "video/vimeo",
+//         src: "https://vimeo.com/76979871"
+//       }
+
+]
+
+var colec3=[
+    {
+      name: 'Disney\'s Oceans 1',
+      description: '',
+      duration: 0,
+      techOrder: ["youtube", "html5"],
+      sources: [{
+        type: "video/youtube",
+        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+      }],
+
+      // POSTER OPTIONAL
+      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // you can use <picture> syntax to display responsive images
+      thumbnail: [
+        {
+          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+          type: 'image/jpeg',
+          media: '(min-width: 400px;)'
+        },
+        {
+          src: 'http://media.w3.org/2010/05/sintel/poster.png'
+        }
+      ]
+
+    },
+    {
+      name: 'Disney\'s Oceans 1',
+      description: '',
+      duration: 0,
+      techOrder: ["vimeo"],
+      sources: [{
+        "type": "video/vimeo",
+        src: "https://vimeo.com/76979871"
+      }],
+      // POSTER OPTIONAL
+      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // you can use <picture> syntax to display responsive images
+      thumbnail: [
+        {
+          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+          type: 'image/jpeg',
+          media: '(min-width: 400px;)'
+        },
+        {
+          src: 'http://media.w3.org/2010/05/sintel/poster.png'
+        }
+      ]
+
+
+    },
+
+    {
+      name: 'Disney\'s Oceans 1',
+      description: '',
+      duration: 0,
+      sources: [
+      { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
+        { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+       
+      ],
+      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+
+      // you can use <picture> syntax to display responsive images
+      thumbnail: [
+        {
+          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+          type: 'image/jpeg',
+          media: '(min-width: 400px;)'
+        },
+        {
+          src: 'http://media.w3.org/2010/05/sintel/poster.png'
+        }
+      ]
+    },
+    {
+      name: 'Disney\'s Oceans 2',
+      description: '',
+      duration: 0,
+      sources: [
+        { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+        { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
+      ],
+
+      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+
+      // you can use <picture> syntax to display responsive images
+      thumbnail: [
+        {
+          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+          type: 'image/jpeg',
+          media: '(min-width: 400px;)'
+        },
+        {
+          src: 'http://media.w3.org/2010/05/sintel/poster.png'
+        }
+      ]
+    },
+    {
+      name: 'Disney\'s Oceans 3',
+      description: '',
+      duration: 0,
+      sources: [
+        { src: 'http://vjs.zencdn.net/v/oceans.mp4?3', type: 'video/mp4' },
+        { src: 'http://vjs.zencdn.net/v/oceans.webm?3', type: 'video/webm' },
+      ],
+
+      // you can use <picture> syntax to display responsive images
+      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+
+      // you can use <picture> syntax to display responsive images
+      thumbnail: [
+        {
+          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+          type: 'image/jpeg',
+          media: '(min-width: 400px;)'
+        },
+        {
+          src: 'http://media.w3.org/2010/05/sintel/poster.png'
+        }
+      ]
+    }, {
+      name: 'Sintel (No Thumbnail)',
+      description: '',
+      sources: [
+      { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
+        { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
+        { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
+        
+      ],
+      thumbnail: false
+    },
+
+    // This is a really underspecified video to demonstrate the
+    // behavior when optional parameters are missing. You'll get better
+    // results with more video metadata!
+    // {
+    //   name: 'Invalid Source',
+    //   sources: [{
+    //     src: 'Invalid'
+    //   }]
+    // }
+  ]
+
+
+
+
+
+updateColection(colec3,player).then(d=>{
+    player.playlist(colec3)
+    player.playlistUi();
+    player.playlist.autoadvance(0);
+ //player.play();
+    
+})
+
+
+  //  var player = videojs('video',{
+  //   fluid:false, // videojs settings
+  //   controls:true,
+  //   height: '300'          
+  // });
+   //player.src({type: 'video/youtube', src: 'https://www.youtube.com/watch?v=xjS6SftYQaQ'});
+ //player.src({type: 'video/mp4', src: 'http://localhost:8080/1280.mp4'});
+ //player.play()
+
+  // if (player.readyState() < 1) {
+  //       // wait for loadedmetdata event
+  //       player.one("loadedmetadata", onLoadedMetadata);
+  //   }
+  //   else {
+  //       // metadata already loaded
+  //       onLoadedMetadata();
+  //   }
+
+  //   function onLoadedMetadata() {
+  //       alert(player.duration());
+        
+  //   }
+
+  
+//     player.ready(function() {
+//     var myPlayer = this;
+//     setTimeout(function(){
+      
+//       var lengthOfVideo = myPlayer.duration();
+//       alert('leng',lengthOfVideo)
+//     },1000)
+  
+// });
+
+
+
+
+//}
+
+  
+
+
+  // player.playlist([
+  //   {
+  //     name: 'Disney\'s Oceans 1',
+  //     description: '',
+  //     duration: 90,
+  //     techOrder: ["youtube", "html5"],
+  //     sources: [{
+  //       type: "video/youtube",
+  //       src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+  //     }],
+
+  //     // POSTER OPTIONAL
+  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //     // you can use <picture> syntax to display responsive images
+  //     thumbnail: [
+  //       {
+  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //         type: 'image/jpeg',
+  //         media: '(min-width: 400px;)'
+  //       },
+  //       {
+  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
+  //       }
+  //     ]
+
+  //   },
+  //   {
+  //     name: 'Disney\'s Oceans 1',
+  //     description: '',
+  //     duration: 45,
+  //     techOrder: ["vimeo"],
+  //     sources: [{
+  //       "type": "video/vimeo",
+  //       src: "https://vimeo.com/76979871"
+  //     }],
+  //     // POSTER OPTIONAL
+  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //     // you can use <picture> syntax to display responsive images
+  //     thumbnail: [
+  //       {
+  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //         type: 'image/jpeg',
+  //         media: '(min-width: 400px;)'
+  //       },
+  //       {
+  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
+  //       }
+  //     ]
+
+
+  //   },
+
+  //   {
+  //     name: 'Disney\'s Oceans 1',
+  //     description: '',
+  //     duration: 45,
+  //     sources: [
+  //       { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+  //       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
+  //     ],
+  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+
+  //     // you can use <picture> syntax to display responsive images
+  //     thumbnail: [
+  //       {
+  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //         type: 'image/jpeg',
+  //         media: '(min-width: 400px;)'
+  //       },
+  //       {
+  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'Disney\'s Oceans 2',
+  //     description: '',
+  //     duration: 45,
+  //     sources: [
+  //       { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+  //       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
+  //     ],
+
+  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+
+  //     // you can use <picture> syntax to display responsive images
+  //     thumbnail: [
+  //       {
+  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //         type: 'image/jpeg',
+  //         media: '(min-width: 400px;)'
+  //       },
+  //       {
+  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     name: 'Disney\'s Oceans 3',
+  //     description: '',
+  //     duration: 45,
+  //     sources: [
+  //       { src: 'http://vjs.zencdn.net/v/oceans.mp4?3', type: 'video/mp4' },
+  //       { src: 'http://vjs.zencdn.net/v/oceans.webm?3', type: 'video/webm' },
+  //     ],
+
+  //     // you can use <picture> syntax to display responsive images
+  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+
+  //     // you can use <picture> syntax to display responsive images
+  //     thumbnail: [
+  //       {
+  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+  //         type: 'image/jpeg',
+  //         media: '(min-width: 400px;)'
+  //       },
+  //       {
+  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
+  //       }
+  //     ]
+  //   }, {
+  //     name: 'Sintel (No Thumbnail)',
+  //     description: '',
+  //     sources: [
+  //       { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
+  //       { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
+  //       { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' }
+  //     ],
+  //     thumbnail: false
+  //   },
+
+  //   // This is a really underspecified video to demonstrate the
+  //   // behavior when optional parameters are missing. You'll get better
+  //   // results with more video metadata!
+  //   {
+  //     name: 'Invalid Source',
+  //     sources: [{
+  //       src: 'Invalid'
+  //     }]
+  //   }]);
+
+
+
+  // Initialize the playlist-ui plugin with no option (i.e. the defaults).
+
+</script>
+
+
+
+
+   
+
+</body>
+
+</html>  

@@ -1,0 +1,308 @@
+:root {
+  --mobile-bp: 768px;
+                
+  --color-black: black;
+  --color-white: white;
+  --color-link: #0083a1;
+  --color-link-hover: #f4137b;
+  --color-title: var(--color-black);
+  --color-title-alt: var(--color-white);
+  --color-text: var(--color-black);
+  --color-text-alt: var(--color-white);
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-black);
+  --font-family: "Calibre";
+  --font-size: 62.5%;
+  --border-color: var(--color-black);
+  --border-color-alt:  var(--color-white);
+  --border-size: 8px;
+  --border-radius: 0;
+                    
+  --color01: var(--color-black);
+  --color02: #f4137b;
+  --color03: #0083a1;
+  --color04: var(--color-white);
+  --bg-color01:  var(--color-black);
+  --bg-color02: #f4137b;
+  --bg-color03: #0083a1;
+  --bg-color04:  var(--color-white);
+  --font-family01: "Calibre";
+  --font-family02: "Calibre";
+  --font-family03: "Calibre";
+  --color-border01: var(--color-black);
+  --color-border02: #f4137b;
+  --color-border03: #0083a1;
+  --color-border04: var(--color-white);
+             
+    
+                                          
+                                        
+                                         
+  
+              
+  --bkt-color-title: var(--color-white);
+  --bkt-color-text: var(--color-white);
+  --bkt-color-link: var(--color-link);
+              
+  --hdr-bg:var(--color-white);
+  --hdr-color-text:var(--color02);
+  --hdr-border:var(--border-color);
+  --hdr-border-width:0.8rem;
+  --hdr-menu-active:var(--color-black);
+  --hdr-menu-active-width:10%;
+  --hdr-menu-active-weight:.4rem;
+             
+  --btn-bg: var(--color02);
+  --btn-color-text: var(--color-text-alt);
+  --btn-border-width: .3rem;
+  --btn-border-color: var(--color02);
+  --btn-border-radius:0;
+  --btn-bg-hover:var(--color-white);
+  --btn-text-hover:var(--color01);
+  --btn-bg-2: var(--color-white);
+  --btn-color-text-2: var(--color-black);
+  --btn-border-color-2: var(--color02);
+  --btn-bg-hover-2:var(--color02);
+  --btn-text-hover-2:var(--color-text-alt);
+              
+  --ftr-color-text: var(--color-white);
+  --ftr-border: var(--color-black);
+                
+  --news-border-size: var(--border-size);
+  --news-border-color:  var(--border-color);
+                         
+  --crlv-color-title: var(--color-white);
+  --crlv-color-text: var(--color-white);
+  --crlv-color-link: var(--color-link); }
+  :root .cmp-boton--btn a {
+    position: relative;
+    top: 3px; }
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0; }
+  .row.no-gutters > [class^="col-"],
+  .row.no-gutters > [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0; }
+
+html {
+  font-size: var(--font-size); }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Black.eot");
+  src: url("../../fonts/Calibre-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Black.woff2") format("woff2"), url("../../fonts/Calibre-Black.woff") format("woff"), url("../../fonts/Calibre-Black.ttf") format("truetype"), url("../../fonts/Calibre-Black.svg#Calibre-Black") format("svg");
+  font-weight: 900;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Thin.eot");
+  src: url("../../fonts/Calibre-Thin.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Thin.woff2") format("woff2"), url("../../fonts/Calibre-Thin.woff") format("woff"), url("../../fonts/Calibre-Thin.ttf") format("truetype"), url("../../fonts/Calibre-Thin.svg#Calibre-Thin") format("svg");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-BlackItalic.eot");
+  src: url("../../fonts/Calibre-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-BlackItalic.woff2") format("woff2"), url("../../fonts/Calibre-BlackItalic.woff") format("woff"), url("../../fonts/Calibre-BlackItalic.ttf") format("truetype"), url("../../fonts/Calibre-BlackItalic.svg#Calibre-BlackItalic") format("svg");
+  font-weight: 900;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-ThinItalic.eot");
+  src: url("../../fonts/Calibre-ThinItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-ThinItalic.woff2") format("woff2"), url("../../fonts/Calibre-ThinItalic.woff") format("woff"), url("../../fonts/Calibre-ThinItalic.ttf") format("truetype"), url("../../fonts/Calibre-ThinItalic.svg#Calibre-ThinItalic") format("svg");
+  font-weight: 100;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-BoldItalic.eot");
+  src: url("../../fonts/Calibre-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-BoldItalic.woff2") format("woff2"), url("../../fonts/Calibre-BoldItalic.woff") format("woff"), url("../../fonts/Calibre-BoldItalic.ttf") format("truetype"), url("../../fonts/Calibre-BoldItalic.svg#Calibre-BoldItalic") format("svg");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Medium.eot");
+  src: url("../../fonts/Calibre-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Medium.woff2") format("woff2"), url("../../fonts/Calibre-Medium.woff") format("woff"), url("../../fonts/Calibre-Medium.ttf") format("truetype"), url("../../fonts/Calibre-Medium.svg#Calibre-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Semibold.eot");
+  src: url("../../fonts/Calibre-Semibold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Semibold.woff2") format("woff2"), url("../../fonts/Calibre-Semibold.woff") format("woff"), url("../../fonts/Calibre-Semibold.ttf") format("truetype"), url("../../fonts/Calibre-Semibold.svg#Calibre-Semibold") format("svg");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Bold.eot");
+  src: url("../../fonts/Calibre-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Bold.woff2") format("woff2"), url("../../fonts/Calibre-Bold.woff") format("woff"), url("../../fonts/Calibre-Bold.ttf") format("truetype"), url("../../fonts/Calibre-Bold.svg#Calibre-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Light.eot");
+  src: url("../../fonts/Calibre-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Light.woff2") format("woff2"), url("../../fonts/Calibre-Light.woff") format("woff"), url("../../fonts/Calibre-Light.ttf") format("truetype"), url("../../fonts/Calibre-Light.svg#Calibre-Light") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-Regular.eot");
+  src: url("../../fonts/Calibre-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-Regular.woff2") format("woff2"), url("../../fonts/Calibre-Regular.woff") format("woff"), url("../../fonts/Calibre-Regular.ttf") format("truetype"), url("../../fonts/Calibre-Regular.svg#Calibre-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-SemiboldItalic.eot");
+  src: url("../../fonts/Calibre-SemiboldItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-SemiboldItalic.woff2") format("woff2"), url("../../fonts/Calibre-SemiboldItalic.woff") format("woff"), url("../../fonts/Calibre-SemiboldItalic.ttf") format("truetype"), url("../../fonts/Calibre-SemiboldItalic.svg#Calibre-SemiboldItalic") format("svg");
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-RegularItalic.eot");
+  src: url("../../fonts/Calibre-RegularItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-RegularItalic.woff2") format("woff2"), url("../../fonts/Calibre-RegularItalic.woff") format("woff"), url("../../fonts/Calibre-RegularItalic.ttf") format("truetype"), url("../../fonts/Calibre-RegularItalic.svg#Calibre-RegularItalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-MediumItalic.eot");
+  src: url("../../fonts/Calibre-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-MediumItalic.woff2") format("woff2"), url("../../fonts/Calibre-MediumItalic.woff") format("woff"), url("../../fonts/Calibre-MediumItalic.ttf") format("truetype"), url("../../fonts/Calibre-MediumItalic.svg#Calibre-MediumItalic") format("svg");
+  font-weight: 500;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Calibre";
+  src: url("../../fonts/Calibre-LightItalic.eot");
+  src: url("../../fonts/Calibre-LightItalic.eot?#iefix") format("embedded-opentype"), url("../../fonts/Calibre-LightItalic.woff2") format("woff2"), url("../../fonts/Calibre-LightItalic.woff") format("woff"), url("../../fonts/Calibre-LightItalic.ttf") format("truetype"), url("../../fonts/Calibre-LightItalic.svg#Calibre-LightItalic") format("svg");
+  font-weight: 300;
+  font-style: italic; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline; }
+
+                                                 
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block; }
+
+a {
+  text-decoration: none; }
+
+em {
+  font-style: oblique !important; }
+
+strong {
+  font-weight: bold !important; }
+
+.d-none {
+  display: none !important; }
+
+.no-border {
+  border: 0 !important; }
+
+.color-01 {
+  color: var(--color01) !important; }
+
+a:hover.color-01,
+a:hover.color-02,
+a:hover.color-03,
+a:hover.color-04,
+a:hover.color-05,
+a:hover.color-06,
+a:hover.color-07,
+a:hover.color-08 {
+  color: var(--color-link-hover) !important; }
+
+.color-02 {
+  color: var(--color02) !important; }
+
+.color-03 {
+  color: var(--color03) !important; }
+
+.color-04 {
+  color: var(--color04) !important; }
+
+.color-05 {
+  color: var(--color05) !important; }
+
+.color-06 {
+  color: var(--color06) !important; }
+
+.color-07 {
+  color: var(--color07) !important; }
+
+.color-08 {
+  color: var(--color08) !important; }
+
+.font-family-01 {
+  font-family: var(--font-family01) !important; }
+
+.font-family-02 {
+  font-family: var(--font-family02) !important; }
+
+.font-family-03 {
+  font-family: var(--font-family03) !important; }
+
+.font-family-04 {
+  font-family: var(--font-family04) !important; }
+
+.font-family-05 {
+  font-family: var(--font-family05) !important; }
+
+.bg-color-01 {
+  background-color: var(--bg-color01) !important; }
+
+.bg-color-02 {
+  background-color: var(--bg-color02) !important; }
+
+.bg-color-03 {
+  background-color: var(--bg-color03) !important; }
+
+.bg-color-04 {
+  background-color: var(--bg-color04) !important; }
+
+.bg-color-05 {
+  background-color: var(--bg-color05) !important; }
+
+.color-border-01 {
+  border-color: var(--color-border01); }
+
+.color-border-02 {
+  border-color: var(--color-border02); }
+
+.color-border-03 {
+  border-color: var(--color-border03); }
+
+.color-border-04 {
+  border-color: var(--color-border04); }
+
+textarea::-ms-clear, input::-ms-clear {
+  display: none; }
+
+select::-ms-expand {
+  display: none; }

@@ -1,0 +1,303 @@
+
+
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Portal privado Inversis</title>
+
+   
+        <style>
+
+            body{
+                overflow-x: hidden;
+            }
+
+            .logo{
+                /* background-image: url("./logo.png"); */
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 600px;
+                height: 600px;
+                position: absolute;
+                top: 0;
+                right: -100px;
+                transform: rotate(45deg);
+                opacity: .2;
+            }
+
+        
+            .index-doc {
+                max-width:768px; margin:0 auto;
+                padding:15px;
+                font:300 16px/1.4 "Poppins",sans-serif;
+            }
+            .index-doc h1 { letter-spacing:-1px; font-weight:200; }
+            .index-doc h3 { font-weight:400; }
+            .index-doc a { color:rgb(34,25,88); text-decoration:none; }
+            .index-doc a:hover { text-decoration:underline;; }
+            .index-doc ol,
+            .index-doc ul { margin:1em 0; padding:12px 15px 1px 35px; }
+            .index-doc > ol,
+            .index-doc > ul {
+                padding-right:75px;
+                border-radius:2px;
+                background:#f0f3f6;
+            }
+            .index-doc ol ol { margin:1em 0 5px; padding:0 0 1px 20px; }
+            .index-doc li { padding-bottom:.5em; }
+            .index-doc li .group { font-weight:500; text-transform:uppercase; }
+            .index-doc li li .group { text-transform:none; }
+            .index-doc li.task { padding-left:55px; }
+            .index-doc li.task > p {
+                display:inline-block; position:relative; vertical-align:middle;
+                right:-47px;
+                width:100%;
+                margin:0 0 0 -50px;
+            }
+            .index-doc li.task > p a { float:left; overflow:hidden; }
+            .index-doc li.task > p > span { display:block; overflow:hidden; border-bottom:1px dotted #ccc; text-align:right; }
+            .index-doc li.task:before {
+                content:"-"; display:inline-block; vertical-align:middle;
+                width:45px;
+                margin:-2px 2px 0 -52px; padding:2px 0;
+                border-radius:2px;
+                font:bold 10px/15px Arial,Helvetica,sans-serif; text-align:center; text-transform:lowercase; color:#fff;
+            }
+        
+        
+            /*
+                LEGEND
+            */
+        
+            #legend {padding-bottom:15px;}
+        
+        
+            /* AVAILABLE STATUS */
+        
+            .index-doc li.task:before        { content:"task";     background:#b0c4de; } /* task */
+            .index-doc li.RD:before          { content:"I+D";      background:lime; }    /* LABS, Research & Development */
+            .index-doc li.standby:before     { content:"standby";  background:#ffa500; } /* standby */
+            .index-doc li.in-progress:before { content:"I.P...";   background:#00ced1; } /* in progress */
+            .index-doc li.validation:before  { content:"validate"; background:#008000; } /* pending validation */
+            .index-doc li.validation:before  { color:#adff2f; }
+            .index-doc li.done:before        { content:"Done !";   background:#32cd32; } /* done! */
+            .index-doc li.evolve:before      { content:"evo";      background:#a9a9a9; } /* Evolve */
+            .index-doc li.attention:before   { content:"att !!";   background:#ff6347; } /* attention required */
+        
+            /* OTHER */
+        
+            .index-doc li.bonus,
+            .index-doc li.additions,
+            .index-doc li.changed,
+            .index-doc li.redo,
+            .index-doc li.nodef,
+            .index-doc li.wtf { position:relative; }
+        
+            .index-doc li.bonus:after,
+            .index-doc li.additions:after,
+            .index-doc li.changed:after,
+            .index-doc li.redo:after,
+            .index-doc li.nodef:after,
+            .index-doc li.wtf:after,
+            .index-doc li.rel a:after,
+            .index-doc li.new a:after,
+            .index-doc li.aux a:after {
+                vertical-align:top;
+                padding:2px 5px;
+                font:bold 10px/10px Arial,Helvetica,sans-serif;
+            }
+        
+            .index-doc li.bonus:after,
+            .index-doc li.additions:after,
+            .index-doc li.changed:after,
+            .index-doc li.redo:after,
+            .index-doc li.nodef:after,
+            .index-doc li.wtf:after { position:absolute; left:100%; top:0; margin:0 10px; }
+            .index-doc li.rel a:after,
+            .index-doc li.new a:after,
+            .index-doc li.aux a:after { display:inline-block; vertical-align:top; margin:0 5px; }
+        
+            /* labels */
+            .index-doc li.bonus:after     { background:#9400d3; color:#fff; content:"BONUS";    } /* Bonus */
+            .index-doc li.additions:after { background:#90ee90; color:#fff; content:"EXTRAS";   } /* Additions */
+            .index-doc li.changed:after   { background:#ff0000; color:#fff; content:"changed!"; } /* Changed ! */
+            .index-doc li.redo:after      { background:#ff0000; color:#fff; content:"ReDo";     } /* ReDo */
+            .index-doc li.nodef:after     { background:#ffe010; color:#000; content:"nodef";    } /* nodef */
+            .index-doc li.wtf:after       { background:#990000; color:#fff; content:"WTF!?";    } /* WTF!#?& */
+            .index-doc li.rel a:after     { background:#0000ff; color:#fff; content:"rel";      } /* rel */
+            .index-doc li.new a:after     { background:#ff4500; color:#fff; content:"new";      } /* new */
+            .index-doc li.aux a:after     { background:#ffe010; color:#fff; content:"AUX";      } /* auxiliar */
+            .index-doc .notes { display:block; font-weight:300; font-size:.8em; }
+        
+            @media (max-width: 768px) {
+        
+            }
+        
+            </style>
+    </head>
+    <body>
+        <div class="logo"></div>
+        <div class="index-doc">
+                <h1>Portal privado Inversis</h1>
+                <ol id="toc">
+                
+                <li>
+                    <p class="group">Guía de estilos</p>
+                    <ol>
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/ImgLink.html" class="icon icon icon-html icon-text-html" title="Img Link Card">
+                                        <span class="name">Img Link Card</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task validation">
+                                    <a href="modules/style-guide/header.html" class="icon icon icon-html icon-text-html" title="Header">
+                                        <span class="name">Header</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task done">
+                                    <a href="modules/style-guide/footer.html" class="icon icon icon-html icon-text-html" title="Footer">
+                                        <span class="name">Footer</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/cesta.html" class="icon icon icon-html icon-text-html" title="Cesta">
+                                        <span class="name">Cesta</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task evolve">
+                                    <a href="modules/style-guide/boton.html" class="icon icon icon-html icon-text-html" title="Boton">
+                                        <span class="name">Boton</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/carrusel.html" class="icon icon icon-html icon-text-html" title="Carrusel 01 100%">
+                                        <span class="name">Carrusel 01 100%</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/carruselMultiple.html" class="icon icon icon-html icon-text-html" title="Carrusel 02 Multiple">
+                                        <span class="name">Carrusel 02 Multiple</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/carruselVerticalGuide.html" class="icon icon icon-html icon-text-html" title="Carrusel 03 Vertical">
+                                        <span class="name">Carrusel 03 Vertical</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/carruselVideos.html" class="icon icon icon-html icon-text-html" title="Videos Carrusel">
+                                        <span class="name">Videos Carrusel</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/modal.html" class="icon icon icon-html icon-text-html" title="Modal">
+                                        <span class="name">Modal</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/audio.html" class="icon icon icon-html icon-text-html" title="Audio">
+                                        <span class="name">Audio</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/noticias.html" class="icon icon icon-html icon-text-html" title="Listado Noticias">
+                                        <span class="name">Listado Noticias</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task validation">
+                                    <a href="modules/style-guide/links.html" class="icon icon icon-html icon-text-html" title="Link">
+                                        <span class="name">Link</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task in-progress">
+                                    <a href="modules/style-guide/menusecundary.html" class="icon icon icon-html icon-text-html" title="Menu secundario">
+                                        <span class="name">Menu secundario</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                            
+                                <li class="task validation">
+                                    <a href="modules/style-guide/home1guide.html" class="icon icon icon-html icon-text-html" title="Home 1">
+                                        <span class="name">Home 1</span>
+                                    </a><span class="notes"></span>
+                                </li>
+                            
+                        
+                    </ol>
+                </li>
+                
+                </ol>
+                
+                <h3>Leyenda</h3>
+                <ol id="legend">
+                    <li class="task">
+                        Tarea
+                        <span class="notes">Notas</span>
+                    </li>
+                    <li class="task RD">Tarea en I+D y/o debug</li>
+                    <li class="task standby">Tarea en standby, aplazada o sin definición</li>
+                    <li class="task in-progress">Tarea en curso</li>
+                    <li class="task validation">Tarea terminada que requiere revisión o validación</li>
+                    <li class="task done">Tarea terminada</li>
+                    <li class="task evolve">Tarea, terminada (o no), pero en evolución</li>
+                    <li class="task attention">Tarea retrasada, que requiere atención inmediata, no estaba definida o es problemática</li>
+                    <li class="task bonus"><a>Bonus o tarea no esencial (mejora, alternativa, etc.)</a></li>
+                    <li class="task additions">Tarea a la que se le han añadido más cosas o nuevas especificaciones</li>
+                    <li class="task changed">Tarea que ha cambiado con respecto a un estado anterior</li>
+                    <li class="task redo">Tarea que se ha tenido que rehacer</li>
+                    <li class="task nodef">Pendiente diseño, especificación, etc.</li>
+                    <li class="task wtf">Tarea WTF!... no se dispone suficente información, incongruente, etc.</li>
+                    <li class="task rel"><a href="">Tarea relacionada o equivalente a otra entrada. Requiere enlace</a></li>
+                    <li class="task new"><a href="">Tarea nueva (acepta cualquiera de los estados anteriores). Requiere enlace</a></li>
+                    <li class="task aux"><a href="">Tarea a la que sólo le faltan elementos auxiliares o retoques finales. Requiere enlace</a></li>
+                </ol>
+        </div>
+    </body>
+
+</html>
