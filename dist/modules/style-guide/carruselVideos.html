@@ -58,9 +58,6 @@
 
 <script>
 
-// $.getJSON('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=xjS6SftYQaQ&key=AIzaSyDwkQH4OOeYn27ZthmxO-_ZjJx3yNzGI4U',function(data){
-//  // alert(JSON.stringify(data))
-// })
 var player = videojs('video',{
             fluid:false, // videojs settings
             controls:true,
@@ -69,21 +66,6 @@ var player = videojs('video',{
 
 
 
-var colec=[
-{type: 'video/mp4', src: 'http://localhost:8080/1280.mp4'},
-{ src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
-{ src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
-{ src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
-{
-        type: "video/youtube",
-        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
-      }
-// {
-//         "type": "video/vimeo",
-//         src: "https://vimeo.com/76979871"
-//       }
-
-]
 
 var colec3=[
     {
@@ -232,8 +214,8 @@ var colec3=[
 
 
 
-
-updateColection(colec3,player).then(d=>{
+updateTimeColection(colec3,player).then(function(d){
+  // Initialize the playlist-ui plugin with no option (i.e. the defaults).
     player.playlist(colec3)
     player.playlistUi();
     player.playlist.autoadvance(0);
@@ -242,192 +224,10 @@ updateColection(colec3,player).then(d=>{
 })
 
 
-  //  var player = videojs('video',{
-  //   fluid:false, // videojs settings
-  //   controls:true,
-  //   height: '300'          
-  // });
-   //player.src({type: 'video/youtube', src: 'https://www.youtube.com/watch?v=xjS6SftYQaQ'});
- //player.src({type: 'video/mp4', src: 'http://localhost:8080/1280.mp4'});
- //player.play()
-
-  // if (player.readyState() < 1) {
-  //       // wait for loadedmetdata event
-  //       player.one("loadedmetadata", onLoadedMetadata);
-  //   }
-  //   else {
-  //       // metadata already loaded
-  //       onLoadedMetadata();
-  //   }
-
-  //   function onLoadedMetadata() {
-  //       alert(player.duration());
-        
-  //   }
-
-  
-//     player.ready(function() {
-//     var myPlayer = this;
-//     setTimeout(function(){
-      
-//       var lengthOfVideo = myPlayer.duration();
-//       alert('leng',lengthOfVideo)
-//     },1000)
-  
-// });
-
-
-
-
-//}
-
   
 
-
-  // player.playlist([
-  //   {
-  //     name: 'Disney\'s Oceans 1',
-  //     description: '',
-  //     duration: 90,
-  //     techOrder: ["youtube", "html5"],
-  //     sources: [{
-  //       type: "video/youtube",
-  //       src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
-  //     }],
-
-  //     // POSTER OPTIONAL
-  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //     // you can use <picture> syntax to display responsive images
-  //     thumbnail: [
-  //       {
-  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //         type: 'image/jpeg',
-  //         media: '(min-width: 400px;)'
-  //       },
-  //       {
-  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
-  //       }
-  //     ]
-
-  //   },
-  //   {
-  //     name: 'Disney\'s Oceans 1',
-  //     description: '',
-  //     duration: 45,
-  //     techOrder: ["vimeo"],
-  //     sources: [{
-  //       "type": "video/vimeo",
-  //       src: "https://vimeo.com/76979871"
-  //     }],
-  //     // POSTER OPTIONAL
-  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //     // you can use <picture> syntax to display responsive images
-  //     thumbnail: [
-  //       {
-  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //         type: 'image/jpeg',
-  //         media: '(min-width: 400px;)'
-  //       },
-  //       {
-  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
-  //       }
-  //     ]
-
-
-  //   },
-
-  //   {
-  //     name: 'Disney\'s Oceans 1',
-  //     description: '',
-  //     duration: 45,
-  //     sources: [
-  //       { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
-  //       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
-  //     ],
-  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-
-  //     // you can use <picture> syntax to display responsive images
-  //     thumbnail: [
-  //       {
-  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //         type: 'image/jpeg',
-  //         media: '(min-width: 400px;)'
-  //       },
-  //       {
-  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     name: 'Disney\'s Oceans 2',
-  //     description: '',
-  //     duration: 45,
-  //     sources: [
-  //       { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
-  //       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
-  //     ],
-
-  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-
-  //     // you can use <picture> syntax to display responsive images
-  //     thumbnail: [
-  //       {
-  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //         type: 'image/jpeg',
-  //         media: '(min-width: 400px;)'
-  //       },
-  //       {
-  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     name: 'Disney\'s Oceans 3',
-  //     description: '',
-  //     duration: 45,
-  //     sources: [
-  //       { src: 'http://vjs.zencdn.net/v/oceans.mp4?3', type: 'video/mp4' },
-  //       { src: 'http://vjs.zencdn.net/v/oceans.webm?3', type: 'video/webm' },
-  //     ],
-
-  //     // you can use <picture> syntax to display responsive images
-  //     poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-
-  //     // you can use <picture> syntax to display responsive images
-  //     thumbnail: [
-  //       {
-  //         srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-  //         type: 'image/jpeg',
-  //         media: '(min-width: 400px;)'
-  //       },
-  //       {
-  //         src: 'http://media.w3.org/2010/05/sintel/poster.png'
-  //       }
-  //     ]
-  //   }, {
-  //     name: 'Sintel (No Thumbnail)',
-  //     description: '',
-  //     sources: [
-  //       { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
-  //       { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
-  //       { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' }
-  //     ],
-  //     thumbnail: false
-  //   },
-
-  //   // This is a really underspecified video to demonstrate the
-  //   // behavior when optional parameters are missing. You'll get better
-  //   // results with more video metadata!
-  //   {
-  //     name: 'Invalid Source',
-  //     sources: [{
-  //       src: 'Invalid'
-  //     }]
-  //   }]);
-
-
-
-  // Initialize the playlist-ui plugin with no option (i.e. the defaults).
+  
+  
 
 </script>
 
