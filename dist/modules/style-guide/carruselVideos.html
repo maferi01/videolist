@@ -20,6 +20,16 @@
     <link rel="stylesheet" href="../../assets/Script/videojs/videojs-playlist-ui/dist/videojs-playlist-ui.css">
     <link rel="stylesheet" href="../../assets/CSS/themes/evo.css" media="all">
     <link rel="stylesheet" href="../../assets/CSS/stylesPC.css" media="all">
+   
+    
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script> 
+     
+    <!-- Minified version of `es6-promise-auto` below. -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+    
+    
     <script src="../../assets/Script/jquery-ui-1.12.1/jquery.js"></script>
     <script src="../../assets/Script/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="../../assets/Script/jquerymodal/jquerymodal.js"></script>
@@ -59,8 +69,8 @@
 <script>
 
 var player = videojs('video',{
-            fluid:false, // videojs settings
-            controls:true,
+          //  fluid:false, // videojs settings
+           // controls:true,
            // height: '300'          
           });
 
@@ -92,7 +102,8 @@ var colec3=[
         }
       ]
 
-    },
+    }
+    ,
     {
       name: 'Disney\'s Oceans 1',
       description: '',
@@ -124,8 +135,11 @@ var colec3=[
       description: '',
       duration: 0,
       sources: [
+      { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },  
       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
-        { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+  
+      ,
+        
        
       ],
       poster: 'http://media.w3.org/2010/05/sintel/poster.png',
@@ -170,8 +184,9 @@ var colec3=[
       description: '',
       duration: 0,
       sources: [
-        { src: 'http://vjs.zencdn.net/v/oceans.mp4?3', type: 'video/mp4' },
-        { src: 'http://vjs.zencdn.net/v/oceans.webm?3', type: 'video/webm' },
+      { src: 'http://vjs.zencdn.net/v/oceans.mp4?3', type: 'video/mp4' },
+      { src: 'http://vjs.zencdn.net/v/oceans.webm?3', type: 'video/webm' },
+     
       ],
 
       // you can use <picture> syntax to display responsive images
@@ -188,12 +203,14 @@ var colec3=[
           src: 'http://media.w3.org/2010/05/sintel/poster.png'
         }
       ]
-    }, {
+    },
+     {
       name: 'Sintel (No Thumbnail)',
       description: '',
+      duration: 0,
       sources: [
+      { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
       { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
-        { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
         { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
         
       ],
@@ -213,29 +230,22 @@ var colec3=[
 
 
 
-
-updateTimeColection(colec3,player).then(function(d){
+updateTimeColection(colec3,player).then(function(colec){
   // Initialize the playlist-ui plugin with no option (i.e. the defaults).
-    player.playlist(colec3)
+    player.playlist(colec)
     player.playlistUi();
     player.playlist.autoadvance(0);
  //player.play();
-    
-})
-
-
-  
-
+    }).catch(function(fromReject) {
+            console.log(fromReject);
+          })
+ 
   
   
 
 </script>
 
 
-
-
-   
-
-</body>
+ </body>
 
 </html>  

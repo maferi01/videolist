@@ -14,11 +14,12 @@ function getInfoVideo(src,player){
                    resolve(dur)
        
                });
-        //}
-        // else {
-        //     // metadata already loaded
-        //     onLoadedMetadata();
-        // }
+
+             player.on('error', function(e) {
+               console.error('error',src.src,e)
+               resolve(0) })
+
+        
         player.src(src);
         
        
@@ -30,12 +31,20 @@ function getInfoVideo(src,player){
 
 function getInfoTube(src){
   return new Promise(function(resolve){
-    var url= new URL(src.src);
+  //  var url= new URL(src.src);
     var keyTube='AIzaSyDwkQH4OOeYn27ZthmxO-_ZjJx3yNzGI4U';
-    var v=url.searchParams.get('v');
-    $.getJSON('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id='+v+'&key='+keyTube,function(data){
-        resolve(data.items[0].contentDetails.duration.replace('PT','').replace('M',':').replace('S',''))
-       })
+    //var v=url.searchParams.get('v');
+    var v=getParameterByName('v',src.src);
+    console.log('parameter v',v);
+   
+    ajxJson('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id='+v+'&key='+keyTube)
+    .then(function(data){
+            console.log('respond yputube',data)
+            resolve(data.items[0].contentDetails.duration.replace('PT','').replace('M',':').replace('S',''))
+           })
+
+
+
   })
 }
 
@@ -43,9 +52,13 @@ function getInfoVimeo(src){
     return new Promise(function(resolve){
       var keyVimeo='02013d39440018853077055dd7b6dd2a';  
       var v=src.src.replace('https://vimeo.com/','');
-      $.getJSON('https://api.vimeo.com/videos/'+v+'?access_token='+keyVimeo,function(data){
-          resolve(data.duration)
-         })
+   
+         ajxJson('https://api.vimeo.com/videos/'+v+'?access_token='+keyVimeo)
+         .then(function(data){
+                   resolve(data.duration)
+                  })
+     
+
     })
   }
   
@@ -63,14 +76,15 @@ function updateTimeColection(colection,player){
       }else if(source.type=== "video/vimeo"){
         return getInfoVimeo(source).then(function(d){nextID.duration=d}); 
       }else{
-        return Promise.resolve()
+        return promise()
       }
       
     });
-  }, Promise.resolve());
+  },  promise());
   
   return result.then(function(e)  {
-    console.log("Resolution is complete! Let's party.",colection)
+    console.log("Collection time is ended",colection)
+    return colection;
   });
 
 }
@@ -83,4 +97,45 @@ function delay(time){
 
 }
 
+function promise(data){
+    return new Promise(function(resolve){
+     resolve(data)
+    })
+  }
 
+
+  function getParameterByName(name,url) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(url);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+
+function ajxJson(url){
+    return new Promise(function(resolve,reject){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        
+        // request state change event
+        xhr.onreadystatechange = function() {
+        
+          // request completed?
+          if (xhr.readyState !== 4) return;
+        
+          if (xhr.status === 200) {
+            // request successful - show response
+            console.log(xhr.responseText);
+            resolve(JSON.parse(xhr.responseText))
+          }
+          else {
+            // request error
+            console.log('HTTP error', xhr.status, xhr.statusText);
+            reject(xhr.statusText)
+          }
+        };
+        
+        // start request
+        xhr.send();
+     });
+    
+}
