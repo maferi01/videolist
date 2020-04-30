@@ -114,7 +114,10 @@ function getInfoVimeo(src,model){
             }
             resolve(info);
                    
-           })
+           }).catch(function(fromReject) {
+            console.error(fromReject);
+            resolve({});
+            })
      
 
     })
