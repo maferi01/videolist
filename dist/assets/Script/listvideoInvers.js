@@ -6,6 +6,7 @@ var VideoListInvers = {
   getResolution:getResolution,
   vidObj:null,
   videoActive:null,
+  videoFirst:null,
   info:{
     small_max:900,
     //medium_max:900,
@@ -91,6 +92,12 @@ function createElementItemPlayer(data, playCall, playerData) {
   const content = divItem.querySelector(".content");
   const contentActive = divItem.querySelector(".content-active");
   
+  if(!VideoListInvers.videoFirst){
+    VideoListInvers.videoFirst={
+      content:content
+    }
+  }
+
   time.textContent = (data.duration).toPrecision(3);
   imgLarge.setAttribute('src',data.thumbs.large);
   imgSmall.setAttribute('src',data.thumbs.small);
@@ -186,6 +193,9 @@ function playerlist(idContainer, listPlay,videojs, playCall) {
   listPlay.forEach(function (data) {
     playerCont.appendChild(VideoListInvers.createElementItemPlayer(data, playCall, playerData));
   });
+
+  // set first video
+   VideoListInvers.videoFirst.content.click();
 }
 
 
