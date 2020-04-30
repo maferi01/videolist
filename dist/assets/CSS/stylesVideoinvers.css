@@ -62,6 +62,11 @@
     .img-video-small{
         display: inline;
     }
+
+    .canvasimg{
+        max-width: 100px;
+        max-height: 100px;
+    }
   }
 
   @media screen and (min-width: 900px) {
@@ -71,6 +76,11 @@
     
     .img-video-small{
         display: none;
+    }
+    
+    .canvasimg{
+        max-width: 150px;
+        max-height: 150px;
     }
   }  
 

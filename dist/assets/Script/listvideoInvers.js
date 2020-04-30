@@ -49,6 +49,8 @@ function loadvideo(src,posters){
     }else{
       VideoListInvers.vidObj.poster(posters.small);
     }
+  }else{
+    VideoListInvers.vidObj.poster('');
   }
  
    VideoListInvers.vidObj.src(src);
@@ -100,18 +102,22 @@ function createElementItemPlayer(data, playCall, playerData) {
   }
 
   var timeVal;
-  if(typeof data.duration == "string"  && data.duration.includes(':')){
-    timeVal = data.duration;
-  }else{
-    timeVal = data.duration.toPrecision(3);
-  }
+  if(data.duration){
+    if(typeof data.duration == "string"  && data.duration.includes(':')){
+      timeVal = data.duration;
+    }else{
+      timeVal = data.duration.toPrecision(3);
+    }
     time.textContent = timeVal;
+   
+  }
   
   if(data.thumbs){
     imgLarge.setAttribute('src',data.thumbs.large);
     imgSmall.setAttribute('src',data.thumbs.small);
   }
   if(data.canvas){
+    data.canvas.classList.add("canvasimg");
     content.appendChild(data.canvas)
   }
   

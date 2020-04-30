@@ -86,45 +86,54 @@ var player = videojs('video',{
 
 
 var colec3=[
-    // {
-    //   name: 'Youtube Video',
-    //   description: '',
-    //   duration: 0,
-    //   techOrder: ["youtube", "html5"],
-    //   sources: [{
-    //     type: "video/youtube",
-    //     src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
-    //   }],
+    {
+      name: 'Youtube Video',
+      description: '',
+      duration: 0,
+      techOrder: ["youtube", "html5"],
+      sources: [{
+        type: "video/youtube",
+        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+      }]
+      
+    },
+    {
+      name: 'Youtube Video 2',
+      description: '',
+      duration: 0,
+      techOrder: ["youtube", "html5"],
+      sources: [{
+        type: "video/youtube",
+        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+      }],
 
-    //   // POSTER OPTIONAL
-    //   // you can use <picture> syntax to display responsive images
-    //   posters:{
-    //      large: 'http://localhost:8080/assets/img/common/example.png',
-    //      small: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //   },
-    //   thumbs:{
-    //     large: 'http://localhost:8080/assets/img/common/example.png',
-    //     small: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //   },
-    // },
-    // {
-    //   name: 'Viemo',
-    //   description: '',
-    //   duration: 0,
-    //   techOrder: ["vimeo"],
-    //   sources: [{
-    //     "type": "video/vimeo",
-    //     src: "https://vimeo.com/76979871"
-    //   }],
-    //   posters:{
-    //      large: 'http://localhost:8080/assets/img/common/example.png',
-    //      small: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //   },
-    //   // thumbs:{
-    //   //   large: 'http://localhost:8080/assets/img/common/example.png',
-    //   //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //   // }
-    // },
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      }
+    },
+    {
+      name: 'Viemo',
+      description: '',
+      duration: 0,
+      techOrder: ["vimeo"],
+      sources: [{
+        "type": "video/vimeo",
+        src: "https://vimeo.com/76979871"
+      }],
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      // thumbs:{
+      //   large: 'http://localhost:8080/assets/img/common/example.png',
+      //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // }
+    },
     {
       name: 'Disney\'s Oceans 1',
       description: '',
@@ -199,7 +208,15 @@ var colec3=[
         { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
         
       ],
-      thumbnail: false
+      // you can use <picture> syntax to display responsive images
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+       thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      } 
     },
 
     // This is a really underspecified video to demonstrate the
