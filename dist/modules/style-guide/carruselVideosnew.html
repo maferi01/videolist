@@ -55,13 +55,13 @@
             <div class="cmp-carruselVideos">
   <h2 class="cmp-carruselVideos__title">Lorem ipsum dolor sit amet</h2>
   <div class="cmp-carruselVideos__wrapper">
-    <video id="video" class="video-js  vjs-big-play-centered " controls>
+    <video id="video" class="video-js  vjs-big-play-centered " controls >
     </video>
     <div id="list-video-inv" class="list-video-inv">
       
 
     </div>
-
+   
     <div class="vjs-playlist vjs-fluid vjs-playlist-vertical vjs-mouse">
       <!--
         The contents of this element will be filled based on the
@@ -70,10 +70,13 @@
     </div>
   </div>
 </div>
+<!-- <canvas id="thecanvas"  >
+</canvas> -->
 
 <script>
 
 var player = videojs('video',{
+         //   crossOrigin: "Anonymous"
           //  fluid:false, // videojs settings
            // controls:true,
            // height: '300'          
@@ -83,80 +86,65 @@ var player = videojs('video',{
 
 
 var colec3=[
-    {
-      name: 'Youtube Video',
-      description: '',
-      duration: 0,
-      techOrder: ["youtube", "html5"],
-      sources: [{
-        type: "video/youtube",
-        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
-      }],
+    // {
+    //   name: 'Youtube Video',
+    //   description: '',
+    //   duration: 0,
+    //   techOrder: ["youtube", "html5"],
+    //   sources: [{
+    //     type: "video/youtube",
+    //     src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+    //   }],
 
-      // POSTER OPTIONAL
-      // you can use <picture> syntax to display responsive images
-      posters:{
-         large: 'http://localhost:8080/assets/img/common/example.png',
-         small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
-      // thumbs:{
-      //   large: 'http://localhost:8080/assets/img/common/example.png',
-      //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      // },
-    },
-    {
-      name: 'Viemo',
-      description: '',
-      duration: 0,
-      techOrder: ["vimeo"],
-      sources: [{
-        "type": "video/vimeo",
-        src: "https://vimeo.com/76979871"
-      }],
-      posters:{
-         large: 'http://localhost:8080/assets/img/common/example.png',
-         small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
-      // thumbs:{
-      //   large: 'http://localhost:8080/assets/img/common/example.png',
-      //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      // }
-    },
+    //   // POSTER OPTIONAL
+    //   // you can use <picture> syntax to display responsive images
+    //   posters:{
+    //      large: 'http://localhost:8080/assets/img/common/example.png',
+    //      small: 'http://media.w3.org/2010/05/sintel/poster.png',
+    //   },
+    //   thumbs:{
+    //     large: 'http://localhost:8080/assets/img/common/example.png',
+    //     small: 'http://media.w3.org/2010/05/sintel/poster.png',
+    //   },
+    // },
+    // {
+    //   name: 'Viemo',
+    //   description: '',
+    //   duration: 0,
+    //   techOrder: ["vimeo"],
+    //   sources: [{
+    //     "type": "video/vimeo",
+    //     src: "https://vimeo.com/76979871"
+    //   }],
+    //   posters:{
+    //      large: 'http://localhost:8080/assets/img/common/example.png',
+    //      small: 'http://media.w3.org/2010/05/sintel/poster.png',
+    //   },
+    //   // thumbs:{
+    //   //   large: 'http://localhost:8080/assets/img/common/example.png',
+    //   //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
+    //   // }
+    // },
     {
       name: 'Disney\'s Oceans 1',
       description: '',
       duration: 0,
       sources: [
-      { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },  
+      { src: 'http://techslides.com/demos/sample-videos/small.mp4', type: 'video/mp4' },  
       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
       ,
        
       ],
-      posters:{
-         large: 'http://localhost:8080/assets/img/common/example.png',
-         small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
-      thumbs:{
-        large: 'http://localhost:8080/assets/img/common/example.png',
-        small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
+      // posters:{
+      //    large: 'http://localhost:8080/assets/img/common/example.png',
+      //    small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // },
+      // thumbs:{
+      //   large: 'http://localhost:8080/assets/img/common/example.png',
+      //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // },
 
-      // you can use <picture> syntax to display responsive images
-      // thumbnail: [
-      //   {
-      //     srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-      //     type: 'image/jpeg',
-      //     media: '(min-width: 400px;)'
-      //   },
-      //   {
-      //     srcset: 'http://localhost:8080/example.png',
-      //     type: 'image/jpeg',
-      //     media: '(min-width: 900px;)'
-      //   },
-      //   {
-      //     src: 'http://media.w3.org/2010/05/sintel/poster.png'
-      //   }
-      // ]
+      
     },
     {
       name: 'Disney\'s Oceans 2',
@@ -165,29 +153,19 @@ var colec3=[
       sources: [
         { src: 'https://d2hvquy2h1wifc.cloudfront.net/EN/Corporate-video.mp4', type: 'video/mp4' },
         { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
-      ],
+      ]
     
 
-      posters:{
-         large: 'http://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
-         small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
-      thumbs:{
-        large: 'http://localhost:8080/assets/img/common/example.png',
-        small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
+      // posters:{
+      //    large: 'http://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
+      //    small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // },
+      // thumbs:{
+      //   large: 'http://localhost:8080/assets/img/common/example.png',
+      //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // },
 
-      // you can use <picture> syntax to display responsive images
-      // thumbnail: [
-      //   {
-      //     srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-      //     type: 'image/jpeg',
-      //     media: '(min-width: 400px;)'
-      //   },
-      //   {
-      //     src: 'http://media.w3.org/2010/05/sintel/poster.png'
-      //   }
-      // ]
+      
     },
     {
       name: 'Disney\'s Oceans 3',
@@ -200,40 +178,29 @@ var colec3=[
       ],
 
       // you can use <picture> syntax to display responsive images
-      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-      posters:{
-         large: 'http://localhost:8080/assets/img/common/example.png',
-         small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      },
-      thumbs:{
-        large: 'http://localhost:8080/assets/img/common/example.png',
-        small: 'http://media.w3.org/2010/05/sintel/poster.png',
-      }, 
+      // posters:{
+      //    large: 'http://localhost:8080/assets/img/common/example.png',
+      //    small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // },
+      // // thumbs:{
+      //   large: 'http://localhost:8080/assets/img/common/example.png',
+      //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // }, 
 
-      // you can use <picture> syntax to display responsive images
-      // thumbnail: [
-      //   {
-      //     srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-      //     type: 'image/jpeg',
-      //     media: '(min-width: 400px;)'
-      //   },
-      //   {
-      //     src: 'http://media.w3.org/2010/05/sintel/poster.png'
-      //   }
-      // ]
-    },
-    //  {
-    //   name: 'Sintel (No Thumbnail)',
-    //   description: '',
-    //   duration: 0,
-    //   sources: [
-    //   { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
-    //   { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
-    //     { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
+   
+   },
+     {
+      name: 'Sintel (No Thumbnail)',
+      description: '',
+      duration: 0,
+      sources: [
+      { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
+      { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
+        { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
         
-    //   ],
-    //   thumbnail: false
-    // },
+      ],
+      thumbnail: false
+    },
 
     // This is a really underspecified video to demonstrate the
     // behavior when optional parameters are missing. You'll get better

@@ -43,13 +43,15 @@ var VideoListInvers = {
 
 
 function loadvideo(src,posters){
-  if(VideoListInvers.getResolution()==='large'){
-    VideoListInvers.vidObj.poster(posters.large);
-  }else{
-    VideoListInvers.vidObj.poster(posters.small);
+  if(posters){
+    if(VideoListInvers.getResolution()==='large'){
+      VideoListInvers.vidObj.poster(posters.large);
+    }else{
+      VideoListInvers.vidObj.poster(posters.small);
+    }
   }
-  
-  VideoListInvers.vidObj.src(src);
+ 
+   VideoListInvers.vidObj.src(src);
 }
 
 
@@ -105,11 +107,14 @@ function createElementItemPlayer(data, playCall, playerData) {
   }
     time.textContent = timeVal;
   
+  if(data.thumbs){
+    imgLarge.setAttribute('src',data.thumbs.large);
+    imgSmall.setAttribute('src',data.thumbs.small);
+  }
+  if(data.canvas){
+    content.appendChild(data.canvas)
+  }
   
-  
-  imgLarge.setAttribute('src',data.thumbs.large);
-  imgSmall.setAttribute('src',data.thumbs.small);
-
   var setActive= function(){
     // clean active video
     if(VideoListInvers.videoActive){

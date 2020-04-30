@@ -10,8 +10,13 @@ function getInfoVideo(src,player){
             player.one("loadedmetadata", function () {
                 //   alert(player.duration());
                 var dur= player.duration()
-             
-                   resolve(dur)
+                var info={duration:null,canvas:null};
+                info.duration=dur;
+                  setTimeout(function(){
+                    info.canvas=getImgVideoCanvas()
+                    resolve(info)
+                  },1000) ;
+                 
        
                });
 
@@ -109,14 +114,16 @@ function getInfoVimeo(src,model){
   }
   
 
-
 function updateTimeColection(colection,player){
 
  let result = colection.reduce(function(accumulatorPromise, nextID)  {
     return accumulatorPromise.then(function()  {
       var source=nextID.sources[0];  
       if(source.type=== "video/mp4" || source.type=== "video/webm" || source.type=== "video/ogg")  
-       return getInfoVideo(source,player).then(function(d){nextID.duration=d});
+       return getInfoVideo(source,player).then(function(info){
+        nextID.duration=info.duration;
+        nextID.canvas=info.canvas;
+       });
       else if(source.type=== "video/youtube"){
        return getInfoTube(source,nextID).then(function(info){
          nextID.duration=info.duration;
@@ -190,4 +197,44 @@ function ajxJson(url){
         xhr.send();
      });
     
+}
+
+
+function getImgVideoCanvas(){
+  //var thecanvas=document.getElementById('thecanvas');
+  var thecanvas = document.createElement('canvas');
+  var getvideoDom=document.getElementsByTagName('video');
+  var video=getvideoDom.item(0)
+  var scaleFactor=1;
+	var w = video.videoWidth * scaleFactor;
+	var h = video.videoHeight * scaleFactor;
+  
+  // thecanvas.width=w
+  // thecanvas.height=h
+
+  thecanvas.width=100;
+  thecanvas.height=100;
+
+  // get the canvas context for drawing
+  var context = thecanvas.getContext('2d');
+
+  console.log('video**',video)
+  console.log('canvas**',thecanvas)
+  // draw the video contents into the canvas x, y, width, height
+  context.drawImage( video, 0, 0, thecanvas.width, thecanvas.height);
+  console.log('video**',video)
+
+  // get the image data from the canvas object
+  var dataURL;
+  // try{
+  //    dataURL = thecanvas.toDataURL();
+  // }catch(e){
+  //   console.error(e)
+  // }
+  
+    // set the source of the img tag
+  //img.setAttribute('src', dataURL);
+  //return dataURL;
+
+  return thecanvas;
 }
