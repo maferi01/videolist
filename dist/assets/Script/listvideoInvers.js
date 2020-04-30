@@ -3,8 +3,14 @@ var VideoListInvers = {
   createElementItemPlayer: createElementItemPlayer,
   playerVideolist: playerlist,
   loadvideo:loadvideo,
+  getResolution:getResolution,
   vidObj:null,
-  videoActive:null
+  videoActive:null,
+  info:{
+    small_max:900,
+    //medium_max:900,
+    large_max:2000
+  }
 };
 
 /**
@@ -35,10 +41,13 @@ var VideoListInvers = {
 // }
 
 
-function loadvideo(src,poster){
-  //const src={ src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' };
-  //const poster='http://localhost:8080/assets/example.png'
-  VideoListInvers.vidObj.poster(poster);
+function loadvideo(src,posters){
+  if(VideoListInvers.getResolution()==='large'){
+    VideoListInvers.vidObj.poster(posters.large);
+  }else{
+    VideoListInvers.vidObj.poster(posters.small);
+  }
+  
   VideoListInvers.vidObj.src(src);
 }
 
@@ -99,7 +108,7 @@ function createElementItemPlayer(data, playCall, playerData) {
   }
     
   content.addEventListener("click", function () {
-     VideoListInvers.loadvideo(data.sources[0],data.posters.large)
+     VideoListInvers.loadvideo(data.sources[0],data.posters)
      setActive()
     
   });
@@ -177,4 +186,16 @@ function playerlist(idContainer, listPlay,videojs, playCall) {
   listPlay.forEach(function (data) {
     playerCont.appendChild(VideoListInvers.createElementItemPlayer(data, playCall, playerData));
   });
+}
+
+
+function getResolution(){
+  console.log('resolution avil',window.outerWidth)
+  if(window.outerWidth > VideoListInvers.info.small_max){
+    return 'large';
+  }else{
+    return 'small'
+  }
+  ///console.log('resolution',screen.width)
+  
 }
