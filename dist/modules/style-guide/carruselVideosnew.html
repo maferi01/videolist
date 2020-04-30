@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../../assets/Script/videojs/videojs-playlist-ui/dist/videojs-playlist-ui.css">
     <link rel="stylesheet" href="../../assets/CSS/themes/evo.css" media="all">
     <link rel="stylesheet" href="../../assets/CSS/stylesPC.css" media="all">
+    <link rel="stylesheet" href="../../assets/CSS/stylesVideoinvers.css" media="all">
    
     
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
@@ -35,11 +36,11 @@
     <script src="../../assets/Script/jquerymodal/jquerymodal.js"></script>
     <script src="../../assets/Script/owl-carousel-2.3.4/owl.carousel.min.js"></script>
     <script src="../../assets/Script/videojs/video.js/dist/video.js"></script>
-    <script src="../../assets/Script/videojs/videojs-playlist/dist/videojs-playlist.js"></script>
-    <script src="../../assets/Script/videojs/videojs-playlist-ui/dist/videojs-playlist-ui.js"></script>
     <script src="../../assets/Script/videojs/videojs-playlist-ui/dist/lang/es.js"></script>
     <script src="../../assets/Script/videojs/videojs-youtube/videojs-youtube.js"></script>
     <script src="../../assets/Script/videojs/videojs-vimeo/videojs-vimeo.umd.js"></script>
+    <script src="../../assets/Script/listvideoInvers.js"></script>
+
     <script src="../../assets/Script/howler/howler.min.js"></script>
     <script src="../../assets/Script/audiojs.js"></script>
     <script src="../../assets/Script/scriptPC.js"></script>
@@ -56,6 +57,10 @@
   <div class="cmp-carruselVideos__wrapper">
     <video id="video" class="video-js  vjs-big-play-centered " controls>
     </video>
+    <div id="list-video-inv">
+      
+
+    </div>
 
     <div class="vjs-playlist vjs-fluid vjs-playlist-vertical vjs-mouse">
       <!--
@@ -137,52 +142,70 @@ var colec3=[
       sources: [
       { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },  
       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
-  
       ,
-        
        
       ],
       poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         medium: 'http://media.w3.org/2010/05/sintel/poster.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        medium: 'http://media.w3.org/2010/05/sintel/poster.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
 
       // you can use <picture> syntax to display responsive images
-      thumbnail: [
-        {
-          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-          type: 'image/jpeg',
-          media: '(min-width: 400px;)'
-        },
-        {
-          srcset: 'http://localhost:8080/example.png',
-          type: 'image/jpeg',
-          media: '(min-width: 900px;)'
-        },
-        {
-          src: 'http://media.w3.org/2010/05/sintel/poster.png'
-        }
-      ]
+      // thumbnail: [
+      //   {
+      //     srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+      //     type: 'image/jpeg',
+      //     media: '(min-width: 400px;)'
+      //   },
+      //   {
+      //     srcset: 'http://localhost:8080/example.png',
+      //     type: 'image/jpeg',
+      //     media: '(min-width: 900px;)'
+      //   },
+      //   {
+      //     src: 'http://media.w3.org/2010/05/sintel/poster.png'
+      //   }
+      // ]
     },
     {
       name: 'Disney\'s Oceans 2',
       description: '',
       duration: 0,
       sources: [
-        { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
+        { src: 'https://d2hvquy2h1wifc.cloudfront.net/EN/Corporate-video.mp4', type: 'video/mp4' },
         { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
       ],
 
       poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+      posters:{
+         large: 'http://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
+         medium: 'http://media.w3.org/2010/05/sintel/poster.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        medium: 'http://media.w3.org/2010/05/sintel/poster.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
 
       // you can use <picture> syntax to display responsive images
-      thumbnail: [
-        {
-          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-          type: 'image/jpeg',
-          media: '(min-width: 400px;)'
-        },
-        {
-          src: 'http://media.w3.org/2010/05/sintel/poster.png'
-        }
-      ]
+      // thumbnail: [
+      //   {
+      //     srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+      //     type: 'image/jpeg',
+      //     media: '(min-width: 400px;)'
+      //   },
+      //   {
+      //     src: 'http://media.w3.org/2010/05/sintel/poster.png'
+      //   }
+      // ]
     },
     {
       name: 'Disney\'s Oceans 3',
@@ -196,31 +219,41 @@ var colec3=[
 
       // you can use <picture> syntax to display responsive images
       poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         medium: 'http://media.w3.org/2010/05/sintel/poster.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        medium: 'http://media.w3.org/2010/05/sintel/poster.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      }, 
 
       // you can use <picture> syntax to display responsive images
-      thumbnail: [
-        {
-          srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-          type: 'image/jpeg',
-          media: '(min-width: 400px;)'
-        },
-        {
-          src: 'http://media.w3.org/2010/05/sintel/poster.png'
-        }
-      ]
+      // thumbnail: [
+      //   {
+      //     srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
+      //     type: 'image/jpeg',
+      //     media: '(min-width: 400px;)'
+      //   },
+      //   {
+      //     src: 'http://media.w3.org/2010/05/sintel/poster.png'
+      //   }
+      // ]
     },
-     {
-      name: 'Sintel (No Thumbnail)',
-      description: '',
-      duration: 0,
-      sources: [
-      { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
-      { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
-        { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
+    //  {
+    //   name: 'Sintel (No Thumbnail)',
+    //   description: '',
+    //   duration: 0,
+    //   sources: [
+    //   { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
+    //   { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
+    //     { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
         
-      ],
-      thumbnail: false
-    },
+    //   ],
+    //   thumbnail: false
+    // },
 
     // This is a really underspecified video to demonstrate the
     // behavior when optional parameters are missing. You'll get better
@@ -237,9 +270,10 @@ var colec3=[
 
 updateTimeColection(colec3,player).then(function(colec){
   // Initialize the playlist-ui plugin with no option (i.e. the defaults).
-    player.playlist(colec)
-    player.playlistUi();
-    player.playlist.autoadvance(0);
+  VideoListInvers.playerVideolist('list-video-inv',colec,player)
+    // player.playlist(colec)
+    // player.playlistUi();
+    // player.playlist.autoadvance(0);
  //player.play();
     }).catch(function(fromReject) {
             console.log(fromReject);
