@@ -137,7 +137,7 @@ function updateTimeColection(colection,player){
       if(source.type=== "video/mp4" || source.type=== "video/webm" || source.type=== "video/ogg")  
        return getInfoVideo(source,player,nextID).then(function(info){
         nextID.duration=info.duration;
-        nextID.canvas=info.canvas;
+        nextID.thumbCanvas=info.canvas;
        });
       else if(source.type=== "video/youtube"){
        return getInfoTube(source,nextID).then(function(info){

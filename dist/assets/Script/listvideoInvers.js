@@ -116,9 +116,9 @@ function createElementItemPlayer(data, playCall, playerData) {
     imgLarge.setAttribute('src',data.thumbs.large);
     imgSmall.setAttribute('src',data.thumbs.small);
   }
-  if(data.canvas){
-    data.canvas.classList.add("canvasimg");
-    content.appendChild(data.canvas)
+  if(data.thumbCanvas){
+    data.thumbCanvas.classList.add("canvasimg");
+    content.appendChild(data.thumbCanvas)
   }
   
   var setActive= function(){
