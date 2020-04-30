@@ -3,7 +3,8 @@ var VideoListInvers = {
   createElementItemPlayer: createElementItemPlayer,
   playerVideolist: playerlist,
   loadvideo:loadvideo,
-  vidObj:null
+  vidObj:null,
+  videoActive:null
 };
 
 /**
@@ -57,7 +58,10 @@ function getTemplate(data) {
 
       <img src="" class="img-video-large"/>
       <img src="" class="img-video-small"/>
-      
+
+      <div class="content-active">
+        <span class="repro">Reproduciendo</span>
+      <div>
     </div>
   </div>
 </div>
@@ -72,19 +76,32 @@ function getTemplate(data) {
 function createElementItemPlayer(data, playCall, playerData) {
   const divItem = document.createElement("div");
   divItem.innerHTML = VideoListInvers.getTemplate(data);
-  const play = divItem.querySelector(".playaction");
-  const stop = divItem.querySelector(".stopaction");
   const time = divItem.querySelector(".time");
   const imgLarge = divItem.querySelector(".img-video-large");
   const imgSmall = divItem.querySelector(".img-video-small");
   const content = divItem.querySelector(".content");
-
+  const contentActive = divItem.querySelector(".content-active");
+  
   time.textContent = (data.duration).toPrecision(3);
   imgLarge.setAttribute('src',data.thumbs.large);
   imgSmall.setAttribute('src',data.thumbs.small);
 
+  var setActive= function(){
+    // clean active video
+    if(VideoListInvers.videoActive){
+      VideoListInvers.videoActive.contentActive.style.display = "none"
+    }
+    //set this active video
+     contentActive.style.display = "block";   
+     VideoListInvers.videoActive={
+      contentActive:contentActive
+     }
+  }
+    
   content.addEventListener("click", function () {
-    VideoListInvers.loadvideo(data.sources[0],data.posters.large)
+     VideoListInvers.loadvideo(data.sources[0],data.posters.large)
+     setActive()
+    
   });
 
 
