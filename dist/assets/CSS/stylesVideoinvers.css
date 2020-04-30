@@ -1,3 +1,10 @@
+
+
+.list-video-inv{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
 .content{
     display: flex;
     flex-direction: column;

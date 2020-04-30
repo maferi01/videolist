@@ -59,24 +59,23 @@ function loadvideo(src,posters){
  * @param {} data
  */
 function getTemplate(data) {
-  const html = `<li>
-<div class="card">
-  <div class="card-content">
-    <div class="content">
-      <div class="name">${data.name}</div>
-      <div class="time"> </div>
+  var ht = ' <li>   <div class="card">'+
+  ' <div class="card-content">'+
+  '  <div class="content"> '+
+  '   <div class="name">'+data.name+'</div>'+
+  '    <div class="time"> </div>'+
 
-      <img src="" class="img-video-large"/>
-      <img src="" class="img-video-small"/>
+  '    <img src="" class="img-video-large"/>'+
+  '    <img src="" class="img-video-small"/>'+
 
-      <div class="content-active">
-        <span class="repro">Reproduciendo</span>
-      <div>
-    </div>
-  </div>
-</div>
-</li>`;
-  return html;
+  '    <div class="content-active">'+
+  '      <span class="repro">Reproduciendo</span>'+
+  '    <div>'+
+  '  </div>'+
+  '</div>'+
+  '</div>'+
+  '</li> ';
+  return ht;
 }
 
 /**
@@ -84,13 +83,13 @@ function getTemplate(data) {
  * @param {*} data
  */
 function createElementItemPlayer(data, playCall, playerData) {
-  const divItem = document.createElement("div");
+  var divItem = document.createElement("div");
   divItem.innerHTML = VideoListInvers.getTemplate(data);
-  const time = divItem.querySelector(".time");
-  const imgLarge = divItem.querySelector(".img-video-large");
-  const imgSmall = divItem.querySelector(".img-video-small");
-  const content = divItem.querySelector(".content");
-  const contentActive = divItem.querySelector(".content-active");
+  var time = divItem.querySelector(".time");
+  var imgLarge = divItem.querySelector(".img-video-large");
+  var imgSmall = divItem.querySelector(".img-video-small");
+  var content = divItem.querySelector(".content");
+  var contentActive = divItem.querySelector(".content-active");
   
   if(!VideoListInvers.videoFirst){
     VideoListInvers.videoFirst={
@@ -98,7 +97,16 @@ function createElementItemPlayer(data, playCall, playerData) {
     }
   }
 
-  time.textContent = (data.duration).toPrecision(3);
+  var timeVal;
+  if(typeof data.duration == "string"  && data.duration.includes(':')){
+    timeVal = data.duration;
+  }else{
+    timeVal = data.duration.toPrecision(3);
+  }
+    time.textContent = timeVal;
+  
+  
+  
   imgLarge.setAttribute('src',data.thumbs.large);
   imgSmall.setAttribute('src',data.thumbs.small);
 
@@ -140,9 +148,9 @@ function createElementItemPlayer(data, playCall, playerData) {
 
   //   },
   //   onload: function () {
-  //     const timeplay = data.howl.duration();
+  //     var timeplay = data.howl.duration();
   //     if(timeplay){
-  //       const timeFormat= (timeplay/60).toPrecision(3)
+  //       var timeFormat= (timeplay/60).toPrecision(3)
   //       time.textContent = timeFormat;
   //       data.duration= timeFormat;
   //     }
@@ -185,10 +193,10 @@ function createElementItemPlayer(data, playCall, playerData) {
  * @param {*} listPlay
  */
 function playerlist(idContainer, listPlay,videojs, playCall) {
-  const playerData = { howCurrent: null };
+  var playerData = { howCurrent: null };
   VideoListInvers.vidObj=videojs;
 
-  const playerCont = document.getElementById(idContainer);
+  var playerCont = document.getElementById(idContainer);
 
   listPlay.forEach(function (data) {
     playerCont.appendChild(VideoListInvers.createElementItemPlayer(data, playCall, playerData));

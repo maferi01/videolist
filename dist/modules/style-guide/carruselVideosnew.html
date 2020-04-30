@@ -57,7 +57,7 @@
   <div class="cmp-carruselVideos__wrapper">
     <video id="video" class="video-js  vjs-big-play-centered " controls>
     </video>
-    <div id="list-video-inv">
+    <div id="list-video-inv" class="list-video-inv">
       
 
     </div>
@@ -83,58 +83,46 @@ var player = videojs('video',{
 
 
 var colec3=[
-    // {
-    //   name: 'Disney\'s Oceans 1',
-    //   description: '',
-    //   duration: 0,
-    //   techOrder: ["youtube", "html5"],
-    //   sources: [{
-    //     type: "video/youtube",
-    //     src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
-    //   }],
+    {
+      name: 'Youtube Video',
+      description: '',
+      duration: 0,
+      techOrder: ["youtube", "html5"],
+      sources: [{
+        type: "video/youtube",
+        src: "https://www.youtube.com/watch?v=xjS6SftYQaQ"
+      }],
 
-    //   // POSTER OPTIONAL
-    //   poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //   // you can use <picture> syntax to display responsive images
-    //   thumbnail: [
-    //     {
-    //       srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //       type: 'image/jpeg',
-    //       media: '(min-width: 400px;)'
-    //     },
-    //     {
-    //       src: 'http://localhost:8080/example.png'
-    //     }
-    //   ]
-
-    // }
-    // ,
-    // {
-    //   name: 'Disney\'s Oceans 1',
-    //   description: '',
-    //   duration: 0,
-    //   techOrder: ["vimeo"],
-    //   sources: [{
-    //     "type": "video/vimeo",
-    //     src: "https://vimeo.com/76979871"
-    //   }],
-    //   // POSTER OPTIONAL
-    //   poster: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //   // you can use <picture> syntax to display responsive images
-    //   thumbnail: [
-    //     {
-    //       srcset: 'http://media.w3.org/2010/05/sintel/poster.png',
-    //       type: 'image/jpeg',
-    //       media: '(min-width: 400px;)'
-    //     },
-    //     {
-    //       src: 'http://media.w3.org/2010/05/sintel/poster.png'
-    //     }
-    //   ]
-
-
-    // },
-
+      // POSTER OPTIONAL
+      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+      // you can use <picture> syntax to display responsive images
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+    },
+    {
+      name: 'Viemo',
+      description: '',
+      duration: 0,
+      techOrder: ["vimeo"],
+      sources: [{
+        "type": "video/vimeo",
+        src: "https://vimeo.com/76979871"
+      }],
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+      thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      }
+    },
     {
       name: 'Disney\'s Oceans 1',
       description: '',
@@ -145,7 +133,6 @@ var colec3=[
       ,
        
       ],
-      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
       posters:{
          large: 'http://localhost:8080/assets/img/common/example.png',
          small: 'http://media.w3.org/2010/05/sintel/poster.png',
@@ -180,8 +167,8 @@ var colec3=[
         { src: 'https://d2hvquy2h1wifc.cloudfront.net/EN/Corporate-video.mp4', type: 'video/mp4' },
         { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
       ],
+    
 
-      poster: 'http://media.w3.org/2010/05/sintel/poster.png',
       posters:{
          large: 'http://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
          small: 'http://media.w3.org/2010/05/sintel/poster.png',
