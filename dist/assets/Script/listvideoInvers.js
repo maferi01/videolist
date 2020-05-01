@@ -54,10 +54,10 @@ function loadVideosList(colec,player,idList){
   video.style.visibility = "hidden";
  
  
-return  updateTimeColection(colec,player).then(function(colec){
+return  updateInfoColection(colec,player).then(function(col){
   video.style.visibility = "visible";
   loading.style.display = "none";
-  VideoListInvers.playerVideolist(idList,colec,player)
+  VideoListInvers.playerVideolist(idList,col,player)
   }).catch(function(fromReject) {
        console.error(fromReject);
    })

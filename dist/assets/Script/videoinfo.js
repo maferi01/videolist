@@ -115,7 +115,7 @@ function getInfoVimeo(src, model) {
   });
 }
 
-function updateTimeColection(colection, player) {
+function updateInfoColection(colection, player) {
   
   let result = colection.reduce(function (accumulatorPromise, nextID) {
     return accumulatorPromise.then(function () {
