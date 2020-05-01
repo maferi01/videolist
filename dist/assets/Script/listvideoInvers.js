@@ -2,6 +2,7 @@ var VideoListInvers = {
   getTemplate: getTemplate,
   createElementItemPlayer: createElementItemPlayer,
   playerVideolist: playerlist,
+  loadVideosList:loadVideosList,
   loadvideo:loadvideo,
   getResolution:getResolution,
   vidObj:null,
@@ -40,6 +41,28 @@ var VideoListInvers = {
 //     smmall: 'http://media.w3.org/2010/05/sintel/poster.png',
 //   },
 // }
+
+function loadVideosList(colec,player,idList){
+  var getvideoDom = document.getElementsByTagName("video");
+  var video = getvideoDom.item(0);
+  
+  var playerCont = document.getElementById(idList);
+  var loading=document.createElement('div');
+  playerCont.appendChild(loading);
+  loading.textContent='Loading Videos...'
+  loading.style.fontSize='2.5em';
+  video.style.visibility = "hidden";
+ 
+ 
+return  updateTimeColection(colec,player).then(function(colec){
+  video.style.visibility = "visible";
+  loading.style.display = "none";
+  VideoListInvers.playerVideolist(idList,colec,player)
+  }).catch(function(fromReject) {
+       console.error(fromReject);
+   })
+  
+}
 
 
 function loadvideo(src,posters){

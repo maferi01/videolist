@@ -219,19 +219,8 @@ var colec3=[
     
   ]
 
+  VideoListInvers.loadVideosList(colec3,player,'list-video-inv');
 
-
-updateTimeColection(colec3,player).then(function(colec){
-  // Initialize the playlist-ui plugin with no option (i.e. the defaults).
-  VideoListInvers.playerVideolist('list-video-inv',colec,player)
-    
- //player.play();
-    }).catch(function(fromReject) {
-            console.log(fromReject);
-          })
- 
-  
-  
 
 </script>
 
