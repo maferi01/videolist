@@ -147,8 +147,20 @@ function updateInfoColection(colection, player) {
 
   return result.then(function (e) {
     console.log("Collection time is ended", colection);
+    console.log('is IE',isIE());
+    if(isIE()){
+      return colection.filter(function(model){ 
+        return model.sources[0].type!=='video/vimeo'
+      });
+    }
     return colection;
   });
+}
+
+
+function isIE(){
+      // Internet Explorer 6-11
+   return  /*@cc_on!@*/false || !!document.documentMode;
 }
 
 function delay(time) {
