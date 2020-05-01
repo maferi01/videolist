@@ -11,7 +11,7 @@ function getInfoVideo(src, player, model) {
         setTimeout(function () {
           info.canvas = getImgVideoCanvas();
           resolve(info);
-        }, 500);
+        },src.type==="video/mp4"?500:3000);
       } else {
         resolve(info);
       }
