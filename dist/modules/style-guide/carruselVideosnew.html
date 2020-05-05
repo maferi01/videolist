@@ -220,7 +220,12 @@ var colec3=[
     
   ]
 
-  VideoListInvers.loadVideosList(colec3,player,'list-video-inv')
+  VideoListInvers.loadVideosList(colec3,player,'list-video-inv',{
+    thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      }
+  })
   .then(function(){console.log('list videos ended******************************')});
 
 

@@ -1,4 +1,4 @@
-function getInfoVideo(src, player, model) {
+function getInfoVideo(src, player, model,infoGeneral) {
   return new Promise(function (resolve) {
     // if (player.readyState() < 1) {
     // wait for loadedmetdata event
@@ -7,7 +7,10 @@ function getInfoVideo(src, player, model) {
       var dur = player.duration();
       var info = { duration: null, canvas: null };
       info.duration = dur;
-      if (!model.thumbs) {
+      if (!model.thumbs && isIE()){
+        info.thumbs= infoGeneral.thumbs;
+        resolve(info);
+      }else if (!model.thumbs) {
         setTimeout(function () {
           info.canvas = getImgVideoCanvas();
           resolve(info);
@@ -115,7 +118,7 @@ function getInfoVimeo(src, model) {
   });
 }
 
-function updateInfoColection(colection, player) {
+function updateInfoColection(colection, player,infoGeneral) {
   
   let result = colection.reduce(function (accumulatorPromise, nextID) {
     return accumulatorPromise.then(function () {
@@ -125,9 +128,14 @@ function updateInfoColection(colection, player) {
         source.type === "video/webm" ||
         source.type === "video/ogg"
       )
-        return getInfoVideo(source, player, nextID).then(function (info) {
+        return getInfoVideo(source, player, nextID,infoGeneral).then(function (info) {
           nextID.duration = info.duration;
-          nextID.thumbCanvas = info.canvas;
+          if(info.canvas){
+            nextID.thumbCanvas = info.canvas;
+          }
+          if(info.thumbs){
+            nextID.thumbs=info.thumbs;
+          }
         });
       else if (source.type === "video/youtube") {
         return getInfoTube(source, nextID).then(function (info) {

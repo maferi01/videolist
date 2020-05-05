@@ -11,7 +11,11 @@ var VideoListInvers = {
   info:{
     small_max:900,
     //medium_max:900,
-    large_max:2000
+    large_max:2000,
+    thumbs:{
+      large:null,
+      small:null
+    }
   }
 };
 
@@ -42,7 +46,7 @@ var VideoListInvers = {
 //   },
 // }
 
-function loadVideosList(colec,player,idList){
+function loadVideosList(colec,player,idList,infoGeneral){
   var getvideoDom = document.getElementsByTagName("video");
   var video = getvideoDom.item(0);
   
@@ -53,8 +57,13 @@ function loadVideosList(colec,player,idList){
   loading.style.fontSize='2.5em';
   video.style.visibility = "hidden";
  
+ if(infoGeneral && infoGeneral.thumbs){
+  VideoListInvers.info.thumbs=infoGeneral.thumbs;
+  
+ }
+
  
-return  updateInfoColection(colec,player).then(function(col){
+return  updateInfoColection(colec,player,VideoListInvers.info).then(function(col){
   video.style.visibility = "visible";
   loading.style.display = "none";
   VideoListInvers.playerVideolist(idList,col,player)
