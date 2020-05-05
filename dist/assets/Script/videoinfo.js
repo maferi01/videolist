@@ -12,7 +12,7 @@ function getInfoVideo(src, player, model,infoGeneral) {
         resolve(info);
       }else if (!model.thumbs) {
         setTimeout(function () {
-          info.canvas = getImgVideoCanvas();
+          info.canvas = getImgVideoCanvas(infoGeneral);
           resolve(info);
         },src.type==="video/mp4"?500:3000);
       } else {
@@ -218,11 +218,11 @@ function ajxJson(url) {
   });
 }
 
-function getImgVideoCanvas() {
+function getImgVideoCanvas(infoGeneral) {
   //var thecanvas=document.getElementById('thecanvas');
   var thecanvas = document.createElement("canvas");
-  var getvideoDom = document.getElementsByTagName("video");
-  var video = getvideoDom.item(0);
+  //var getvideoDom = document.getElementsByTagName("video");
+  var video = infoGeneral.videoTag;
   var scaleFactor = 1;
   var w = video.videoWidth * scaleFactor;
   var h = video.videoHeight * scaleFactor;

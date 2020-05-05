@@ -1,37 +1,223 @@
-var VideoListInvers = {
-  getTemplate: getTemplate,
-  createElementItemPlayer: createElementItemPlayer,
-  playerVideolist: playerlist,
-  loadVideosList:loadVideosList,
-  loadvideo:loadvideo,
-  getResolution:getResolution,
-  vidObj:null,
-  videoActive:null,
-  videoFirst:null,
-  info:{
-    small_max:900,
+function VideoListInvers() {
+
+  this.vidObj= null;
+  this.videoActive= null;
+  this.videoFirst= null
+  this.info= {
+    videoTag:null,
+    small_max: 900,
     //medium_max:900,
-    large_max:2000,
-    thumbs:{
-      large:null,
-      small:null
+    large_max: 2000,
+    thumbs: {
+      large: null,
+      small: null,
     }
-  }
-};
+  };
+
+
+
+  /**
+   *  Template for every File
+   * @param {} data
+   */
+  this.getTemplate = function (data) {
+    var ht =
+      ' <li>   <div class="card">' +
+      ' <div class="card-content">' +
+      '  <div class="content"> ' +
+      '   <div class="name">' +
+      data.name +
+      "</div>" +
+      '    <div class="time"> </div>' +
+      '    <img src="" class="img-video-large"/>' +
+      '    <img src="" class="img-video-small"/>' +
+      '    <div class="content-active">' +
+      '      <span class="repro">Reproduciendo</span>' +
+      "    <div>" +
+      "  </div>" +
+      "</div>" +
+      "</div>" +
+      "</li> ";
+    return ht;
+  };
+
+  /**
+   * Create elment DOM for video File
+   * @param {*} data
+   */
+  this.createElementItemPlayer = function (data) {
+    var self=this;
+    var divItem = document.createElement("div");
+    divItem.innerHTML = self.getTemplate(data);
+    var time = divItem.querySelector(".time");
+    var imgLarge = divItem.querySelector(".img-video-large");
+    var imgSmall = divItem.querySelector(".img-video-small");
+    var content = divItem.querySelector(".content");
+    var contentActive = divItem.querySelector(".content-active");
+
+    if (!self.videoFirst) {
+      self.videoFirst = {
+        content: content,
+      };
+    }
+
+    var timeVal;
+    if (data.duration) {
+      if (typeof data.duration == "string" && data.duration.includes(":")) {
+        timeVal = data.duration;
+      } else {
+        timeVal = data.duration.toPrecision(3);
+      }
+      time.textContent = timeVal;
+    }
+
+    if (data.thumbs) {
+      imgLarge.setAttribute("src", data.thumbs.large);
+      imgSmall.setAttribute("src", data.thumbs.small);
+    }
+    if (data.thumbCanvas) {
+      data.thumbCanvas.classList.add("canvasimg");
+      content.appendChild(data.thumbCanvas);
+    }
+
+    var setActive = function () {
+      // clean active video
+      if (self.videoActive) {
+        self.videoActive.contentActive.style.display = "none";
+      }
+      //set this active video
+      contentActive.style.display = "block";
+      self.videoActive = {
+        contentActive: contentActive,
+        data: data,
+        resolutionActive: self.getResolution(),
+      };
+    };
+
+    content.addEventListener("click", function () {
+      self.loadvideo(data.sources[0], data.posters);
+      setActive();
+    });
+
+    return divItem;
+  };
+
+  /**
+   * Create Player Video list from listplay
+   * @param {*} idContainer
+   * @param {*} listPlay
+   */
+  this.playerVideolist = function (idContainer, listPlay, videojs, playCall) {
+    var self=this;
+    var playerData = { howCurrent: null };
+    self.vidObj = videojs;
+
+    var playerCont = document.getElementById(idContainer);
+
+    listPlay.forEach(function (data) {
+      playerCont.appendChild(
+        self.createElementItemPlayer(data, playCall, playerData)
+      );
+    });
+
+    // set first video
+    self.videoFirst.content.click();
+
+    window.addEventListener("resize", function () {
+      if (
+        self.videoActive &&
+        self.videoActive.resolutionActive !==
+          self.getResolution()
+      ) {
+        // cambio de resoluion devideo activo
+        self.loadvideo(
+          self.videoActive.data.sources[0],
+          self.videoActive.data.posters
+        );
+        self.videoActive.resolutionActive = self.getResolution();
+      }
+    });
+  };
+
+  this.loadVideosList = function (colec, idPlayer, idList, infoGeneral) {
+    var self=this;
+
+   var player = videojs(idPlayer,{
+      //   crossOrigin: "Anonymous"
+       //  fluid:false, // videojs settings
+        // controls:true,
+        // height: '300'          
+       });
+
+    var playerDom=document.getElementById(idPlayer);   
+
+    var getvideoDom = playerDom.getElementsByTagName("video");
+    var video = getvideoDom.item(0);
+    self.info.videoTag=video;    
+
+    var playerCont = document.getElementById(idList);
+    var loading = document.createElement("div");
+    playerCont.appendChild(loading);
+    loading.textContent = "Loading Videos...";
+    loading.style.fontSize = "2.5em";
+    video.style.visibility = "hidden";
+
+    if (infoGeneral && infoGeneral.thumbs) {
+      self.info.thumbs = infoGeneral.thumbs;
+    }
+
+    return updateInfoColection(colec, player, self.info)
+      .then(function (col) {
+        video.style.visibility = "visible";
+        loading.style.display = "none";
+        self.playerVideolist(idList, col, player);
+      })
+      .catch(function (fromReject) {
+        console.error(fromReject);
+      });
+  };
+
+  this.loadvideo = function (src, posters) {
+    var self=this;
+    if (posters) {
+      if (self.getResolution() === "large") {
+        self.vidObj.poster(posters.large);
+      } else {
+        self.vidObj.poster(posters.small);
+      }
+    } else {
+      self.vidObj.poster("");
+    }
+
+    self.vidObj.src(src);
+  };
+
+  this.getResolution = function () {
+    var self=this;
+    console.log("resolution avil", window.outerWidth);
+    if (window.outerWidth > self.info.small_max) {
+      return "large";
+    } else {
+      return "small";
+    }
+    ///console.log('resolution',screen.width)
+  };
+}
+
 
 /**
- * Modelo de Video 
- * @param {el} data 
+ * Modelo de Video
+ * @param {el} data
  */
 // {
 //   name: 'Disney\'s Oceans 1',
 //   description: '',
 //   duration: 0,
 //   sources: [
-//   { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },  
+//   { src: 'http://vjs.zencdn.net/v/oceans.mp4?2', type: 'video/mp4' },
 //   { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
 //   ,
-   
+
 //   ],
 //   poster: 'http://media.w3.org/2010/05/sintel/poster.png',
 //   posters:{
@@ -45,229 +231,3 @@ var VideoListInvers = {
 //     smmall: 'http://media.w3.org/2010/05/sintel/poster.png',
 //   },
 // }
-
-function loadVideosList(colec,player,idList,infoGeneral){
-  var getvideoDom = document.getElementsByTagName("video");
-  var video = getvideoDom.item(0);
-  
-  var playerCont = document.getElementById(idList);
-  var loading=document.createElement('div');
-  playerCont.appendChild(loading);
-  loading.textContent='Loading Videos...'
-  loading.style.fontSize='2.5em';
-  video.style.visibility = "hidden";
- 
- if(infoGeneral && infoGeneral.thumbs){
-  VideoListInvers.info.thumbs=infoGeneral.thumbs;
-  
- }
-
- 
-return  updateInfoColection(colec,player,VideoListInvers.info).then(function(col){
-  video.style.visibility = "visible";
-  loading.style.display = "none";
-  VideoListInvers.playerVideolist(idList,col,player)
-  }).catch(function(fromReject) {
-       console.error(fromReject);
-   })
-  
-}
-
-
-function loadvideo(src,posters){
-  if(posters){
-    if(VideoListInvers.getResolution()==='large'){
-      VideoListInvers.vidObj.poster(posters.large);
-    }else{
-      VideoListInvers.vidObj.poster(posters.small);
-    }
-  }else{
-    VideoListInvers.vidObj.poster('');
-  }
- 
-   VideoListInvers.vidObj.src(src);
-}
-
-
-
-/**
- *  Template for every File
- * @param {} data
- */
-function getTemplate(data) {
-  var ht = ' <li>   <div class="card">'+
-  ' <div class="card-content">'+
-  '  <div class="content"> '+
-  '   <div class="name">'+data.name+'</div>'+
-  '    <div class="time"> </div>'+
-
-  '    <img src="" class="img-video-large"/>'+
-  '    <img src="" class="img-video-small"/>'+
-
-  '    <div class="content-active">'+
-  '      <span class="repro">Reproduciendo</span>'+
-  '    <div>'+
-  '  </div>'+
-  '</div>'+
-  '</div>'+
-  '</li> ';
-  return ht;
-}
-
-/**
- * Create elment DOM for video File
- * @param {*} data
- */
-function createElementItemPlayer(data, playCall, playerData) {
-  var divItem = document.createElement("div");
-  divItem.innerHTML = VideoListInvers.getTemplate(data);
-  var time = divItem.querySelector(".time");
-  var imgLarge = divItem.querySelector(".img-video-large");
-  var imgSmall = divItem.querySelector(".img-video-small");
-  var content = divItem.querySelector(".content");
-  var contentActive = divItem.querySelector(".content-active");
-  
-  if(!VideoListInvers.videoFirst){
-    VideoListInvers.videoFirst={
-      content:content
-    }
-  }
-
-  var timeVal;
-  if(data.duration){
-    if(typeof data.duration == "string"  && data.duration.includes(':')){
-      timeVal = data.duration;
-    }else{
-      timeVal = data.duration.toPrecision(3);
-    }
-    time.textContent = timeVal;
-   
-  }
-  
-  if(data.thumbs){
-    imgLarge.setAttribute('src',data.thumbs.large);
-    imgSmall.setAttribute('src',data.thumbs.small);
-  }
-  if(data.thumbCanvas){
-    data.thumbCanvas.classList.add("canvasimg");
-    content.appendChild(data.thumbCanvas)
-  }
-  
-  var setActive= function(){
-    // clean active video
-    if(VideoListInvers.videoActive){
-      VideoListInvers.videoActive.contentActive.style.display = "none"
-    }
-    //set this active video
-     contentActive.style.display = "block";   
-     VideoListInvers.videoActive={
-      contentActive:contentActive,
-      data:data,
-      resolutionActive: VideoListInvers.getResolution()    
-     }
-  }
-    
-  content.addEventListener("click", function () {
-     VideoListInvers.loadvideo(data.sources[0],data.posters)
-     setActive()
-    
-  });
-
-
-
-
-
-  // stop.style.display = "none";
-
-  // data.howl = new Howl({
-  //  // src: ["./audio/" + data.file + ".webm", "./audio/" + data.file + ".mp3"],
-  //  src: [ data.file ],
-  //  html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
-  //   onplay: function () {
-  //     // Display the duration.
-  //     play.style.display = "none";
-  //     stop.style.display = "block";
-
-  //     // add extra operations
-  //     divItem.classList.add("active");
-
-  //   },
-  //   onload: function () {
-  //     var timeplay = data.howl.duration();
-  //     if(timeplay){
-  //       var timeFormat= (timeplay/60).toPrecision(3)
-  //       time.textContent = timeFormat;
-  //       data.duration= timeFormat;
-  //     }
-
-  //   },
-
-  //   onend: function () {
-  //     play.style.display = "block";
-  //     stop.style.display = "none";
-  //   },
-
-  //   onstop: function () {
-  //     play.style.display = "block";
-  //     stop.style.display = "none";
-
-  //     // add extra operations
-  //     divItem.classList.remove("active");
-  //   },
-  //});
-
-  // play.addEventListener("click", function () {
-  //   if (playerData.howCurrent) {
-  //     playerData.howCurrent.stop();
-  //   }
-  //   data.howl.play();
-  //   playerData.howCurrent = data.howl;
-  //   playCall(data);
-  // });
-
-  // stop.addEventListener("click", function () {
-  //   data.howl.stop();
-  // });
-
-  return divItem;
-}
-
-/**
- * Create Player Video list from listplay
- * @param {*} idContainer
- * @param {*} listPlay
- */
-function playerlist(idContainer, listPlay,videojs, playCall) {
-  var playerData = { howCurrent: null };
-  VideoListInvers.vidObj=videojs;
-
-  var playerCont = document.getElementById(idContainer);
-
-  listPlay.forEach(function (data) {
-    playerCont.appendChild(VideoListInvers.createElementItemPlayer(data, playCall, playerData));
-  });
-
-  // set first video
-   VideoListInvers.videoFirst.content.click();
-
-
-   window.addEventListener('resize', function(){
-    if(VideoListInvers.videoActive && VideoListInvers.videoActive.resolutionActive!==VideoListInvers.getResolution()){
-      // cambio de resoluion devideo activo
-      VideoListInvers.loadvideo(VideoListInvers.videoActive.data.sources[0],VideoListInvers.videoActive.data.posters)      
-      VideoListInvers.videoActive.resolutionActive=VideoListInvers.getResolution();
-    }
-   });
-}
-
-
-function getResolution(){
-  console.log('resolution avil',window.outerWidth)
-  if(window.outerWidth > VideoListInvers.info.small_max){
-    return 'large';
-  }else{
-    return 'small'
-  }
-  ///console.log('resolution',screen.width)
-  
-}

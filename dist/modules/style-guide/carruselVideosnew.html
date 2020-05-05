@@ -61,26 +61,22 @@
       
 
     </div>
-   
-    <div class="vjs-playlist vjs-fluid vjs-playlist-vertical vjs-mouse">
-      <!--
-        The contents of this element will be filled based on the
-        currently loaded playlist
-      -->
+      
+  </div>
+  <div class="cmp-carruselVideos__wrapper">
+    <video id="video2" class="video-js  vjs-big-play-centered " controls >
+    </video>
+    <div id="list-video-inv2" class="list-video-inv">
+      
+
     </div>
+      
   </div>
 </div>
 <!-- <canvas id="thecanvas"  >
 </canvas> -->
 
 <script>
-
-var player = videojs('video',{
-         //   crossOrigin: "Anonymous"
-          //  fluid:false, // videojs settings
-           // controls:true,
-           // height: '300'          
-          });
 
 
 
@@ -220,13 +216,115 @@ var colec3=[
     
   ]
 
-  VideoListInvers.loadVideosList(colec3,player,'list-video-inv',{
+
+var colec2=[
+// {
+//       name: 'Techs Slide Demo ',
+//       description: '',
+//       duration: 0,
+//       sources: [      
+//       { src: 'http://techslides.com/demos/sample-videos/small.mp4', type: 'video/mp4' }  ,
+//       { src: 'http://techslides.com/demos/sample-videos/small.webm', type: 'video/webm' }  ,
+//       { src: 'http://techslides.com/demos/sample-videos/small.ogv', type: 'video/ogg' } ,
+      
+             
+//       ],
+//       // posters:{
+//       //    large: 'http://localhost:8080/assets/img/common/example.png',
+//       //    small: 'http://media.w3.org/2010/05/sintel/poster.png',
+//       // },
+//       // thumbs:{
+//       //   large: 'http://localhost:8080/assets/img/common/example.png',
+//       //   small: 'http://media.w3.org/2010/05/sintel/poster.png',
+//       // },
+
+      
+//     },
+//     {
+//       name: 'Disney\'s Oceans 2',
+//       description: '',
+//       duration: 0,
+//       sources: [
+//       { src: 'https://d2hvquy2h1wifc.cloudfront.net/EN/Corporate-video.mp4', type: 'video/mp4' },
+//       { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },       
+//       ],
+    
+      
+//     },
+//     {
+//       name: 'Disney\'s Oceans 2 Poster',
+//       description: '',
+//       duration: 0,
+//       sources: [
+//         { src: 'https://d2hvquy2h1wifc.cloudfront.net/EN/Corporate-video.mp4', type: 'video/mp4' },
+//         { src: 'http://vjs.zencdn.net/v/oceans.webm?2', type: 'video/webm' },
+//       ],
+    
+
+//       posters:{
+//          large: 'http://d2zihajmogu5jn.cloudfront.net/elephantsdream/poster.png',
+//          small: 'http://media.w3.org/2010/05/sintel/poster.png',
+//       },
+
+      
+//     },
+//     {
+//       name: 'Disney\'s Oceans 3',
+//       description: '',
+//       duration: 0,
+//       sources: [
+//       { src: 'http://vjs.zencdn.net/v/oceans.mp4?3', type: 'video/mp4' },
+//       { src: 'http://vjs.zencdn.net/v/oceans.webm?3', type: 'video/webm' },
+     
+//       ],
+
+      
+//    },
+     {
+      name: 'Sintel (No Thumbnail)',
+      description: '',
+      duration: 0,
+      sources: [
+      { src: 'http://media.w3.org/2010/05/sintel/trailer.mp4', type: 'video/mp4' },
+      { src: 'http://media.w3.org/2010/05/sintel/trailer.ogv', type: 'video/ogg' },
+        { src: 'http://media.w3.org/2010/05/sintel/trailer.webm', type: 'video/webm' },
+        
+      ],
+      // you can use <picture> syntax to display responsive images
+      posters:{
+         large: 'http://localhost:8080/assets/img/common/example.png',
+         small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      },
+       thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      } 
+    }
+
+    
+
+]
+
+  var videoListInvers= new VideoListInvers();
+  videoListInvers.loadVideosList(colec3,'video','list-video-inv',{
     thumbs:{
         large: 'http://localhost:8080/assets/img/common/example.png',
         small: 'http://media.w3.org/2010/05/sintel/poster.png',
       }
   })
   .then(function(){console.log('list videos ended******************************')});
+
+
+  var videoListInvers2= new VideoListInvers();
+  videoListInvers2.loadVideosList(colec2,'video2','list-video-inv2',{
+    thumbs:{
+        large: 'http://localhost:8080/assets/img/common/example.png',
+        small: 'http://media.w3.org/2010/05/sintel/poster.png',
+      }
+  })
+  .then(function(){console.log('list videos ended******************************')});
+
+
 
 
 </script>
