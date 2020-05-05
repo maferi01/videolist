@@ -161,7 +161,9 @@ function createElementItemPlayer(data, playCall, playerData) {
     //set this active video
      contentActive.style.display = "block";   
      VideoListInvers.videoActive={
-      contentActive:contentActive
+      contentActive:contentActive,
+      data:data,
+      resolutionActive: VideoListInvers.getResolution()    
      }
   }
     
@@ -247,6 +249,15 @@ function playerlist(idContainer, listPlay,videojs, playCall) {
 
   // set first video
    VideoListInvers.videoFirst.content.click();
+
+
+   window.addEventListener('resize', function(){
+    if(VideoListInvers.videoActive && VideoListInvers.videoActive.resolutionActive!==VideoListInvers.getResolution()){
+      // cambio de resoluion devideo activo
+      VideoListInvers.loadvideo(VideoListInvers.videoActive.data.sources[0],VideoListInvers.videoActive.data.posters)      
+      VideoListInvers.videoActive.resolutionActive=VideoListInvers.getResolution();
+    }
+   });
 }
 
 
