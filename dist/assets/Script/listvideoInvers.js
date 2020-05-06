@@ -143,11 +143,10 @@ function VideoListInvers() {
     var self=this;
 
    var player = videojs(idPlayer,{
-      //   crossOrigin: "Anonymous"
+   //   crossOrigin: "Anonymous"
        //  fluid:false, // videojs settings
         // controls:true,
-        // height: '300'          
-       });
+  });
 
     var playerDom=document.getElementById(idPlayer);   
 
@@ -177,19 +176,47 @@ function VideoListInvers() {
       });
   };
 
-  this.loadvideo = function (src, posters) {
+  
+  
+  this.preload=function(){
     var self=this;
-    if (posters) {
-      if (self.getResolution() === "large") {
-        self.vidObj.poster(posters.large);
-      } else {
-        self.vidObj.poster(posters.small);
-      }
-    } else {
-      self.vidObj.poster("");
+  
+    if(self.videoActive && self.videoActive.data.sources[0].type==='video/vimeo'){
+      return new Promise(function (resolve, reject) {
+        var src1={ src: 'http://techslides.com/demos/sample-videos/small.mp4', type: 'video/mp4' }
+        self.vidObj.one("loadedmetadata", function () {
+          resolve()
+        }
+        )
+        self.vidObj.poster('')
+        self.vidObj.src(src1);
+         })
+  
+    }else{
+      return promise('')
     }
 
-    self.vidObj.src(src);
+        
+  }
+  
+  
+  
+  this.loadvideo = function (src, posters) {
+    var self=this;
+    
+    self.preload().then(function(){
+      if (posters) {
+        if (self.getResolution() === "large") {
+          self.vidObj.poster(posters.large);
+        } else {
+          self.vidObj.poster(posters.small);
+        }
+      } else {
+        self.vidObj.poster("");
+      }
+        
+        self.vidObj.src(src);
+    })
   };
 
   this.getResolution = function () {
