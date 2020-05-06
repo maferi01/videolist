@@ -1,5 +1,6 @@
 function VideoListInvers() {
 
+  this.blankVideo={ src: ' http://127.0.0.1:8080/assets/videos/blank.mp4', type: 'video/mp4' };
   this.vidObj= null;
   this.videoActive= null;
   this.videoFirst= null
@@ -95,10 +96,11 @@ function VideoListInvers() {
     };
 
     content.addEventListener("click", function () {
-      self.loadvideo(data.sources[0], data.posters);
-      setActive();
+      self.loadvideo(data.sources[0], data.posters).then(function(){
+        setActive();
+      });
+      
     });
-
     return divItem;
   };
 
@@ -183,13 +185,12 @@ function VideoListInvers() {
   
     if(self.videoActive && self.videoActive.data.sources[0].type==='video/vimeo'){
       return new Promise(function (resolve, reject) {
-        var src1={ src: 'http://techslides.com/demos/sample-videos/small.mp4', type: 'video/mp4' }
         self.vidObj.one("loadedmetadata", function () {
           resolve()
         }
         )
         self.vidObj.poster('')
-        self.vidObj.src(src1);
+        self.vidObj.src(self.blankVideo);
          })
   
     }else{
@@ -204,7 +205,7 @@ function VideoListInvers() {
   this.loadvideo = function (src, posters) {
     var self=this;
     
-    self.preload().then(function(){
+   return self.preload().then(function(){
       if (posters) {
         if (self.getResolution() === "large") {
           self.vidObj.poster(posters.large);
